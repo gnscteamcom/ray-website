@@ -1,13 +1,17 @@
+var config = require('./config/config');
+
+var liveReload = config.liveReload;
+
 module.exports = function(grunt) {
 	grunt.initConfig({
-		jade: {
+		pug: {
 			dev: {
 				options: {
 					pretty: true
 				},
 				files: {
 					'index.html': [
-						'jade/index.jade',
+						'pug/index.pug',
 					]
 				}
 			}
@@ -15,17 +19,17 @@ module.exports = function(grunt) {
 		compass: {
 			dev: {
 				options: {
-					config: 'config.rb'
+					config: 'config/config.rb'
 				}
 			}
 		},
 		watch: {
-			jade: {
-				files: 'jade/*.jade',
-				tasks: ['jade'],
+			pug: {
+				files: 'pug/*.pug',
+				tasks: ['pug'],
 				options: {
 					event: ['changed'],
-					livereload: true
+					livereload: liveReload
 				},
 			},
 			scss: {
@@ -40,14 +44,14 @@ module.exports = function(grunt) {
 				files: 'css/*.css',
 				options: {
 					event: ['changed'],
-					livereload: true
+					livereload: liveReload
 				},
 			},
 			js: {
 				files: 'js/*.js',
 				options: {
 					event: ['changed'],
-					livereload: true
+					livereload: liveReload
 				},
 			},
 		},
@@ -55,8 +59,8 @@ module.exports = function(grunt) {
 
 	
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-contrib-jade');
+	grunt.loadNpmTasks('grunt-contrib-pug');
 	grunt.loadNpmTasks('grunt-contrib-compass');
 
-	grunt.registerTask('default', ['jade','watch','compass']);
+	grunt.registerTask('default', ['pug','watch','compass']);
 };
