@@ -1,0 +1,92 @@
+/* ------------------------------------------------------------------------------------------
+__________    _____ _____.___. __________.___ _______      _____  .____     ________ _____.___.
+\______   \  /  _  \__  |   | \______   \   |\      \    /  _  \ |    |    \______ \__  |   |
+ |       _/ /  /_\  \/   |   |  |       _/   |/   |   \  /  /_\  \|    |     |    |  \/   |   |
+ |    |   \/    |    \____   |  |    |   \   /    |    \/    |    \    |___  |    `   \____   |
+ |____|_  /\____|__  / ______|  |____|_  /___\____|__  /\____|__  /_______ \/_______  / ______|
+        \/         \/\/                \/            \/         \/        \/        \/\/       
+ -------------------------------------------------------------------------------------------- */
+/* ------------------
+ * VARIABLES & MIXINS
+ -------------------- */
+br.min-xss,
+br.min-xsm,
+br.min-sm,
+br.min-md,
+br.min-lg {
+  display: none;
+}
+
+@media (min-width: 480px) {
+  br.min-xss {
+    display: inline-block;
+  }
+}
+@media (min-width: 600px) {
+  br.min-xsm {
+    display: inline-block;
+  }
+}
+@media (min-width: 768px) {
+  br.min-sm {
+    display: inline-block;
+  }
+}
+@media (min-width: 992px) {
+  br.min-md {
+    display: inline-block;
+  }
+}
+@media (min-width: 1200px) {
+  br.min-lg {
+    display: inline-block;
+  }
+}
+h1 {
+  font-size: 28px;
+}
+
+h2 {
+  font-size: 23px;
+}
+
+h3 {
+  font-size: 23px;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 15px;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 36px;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+}
+body {
+  font-family: 'Roboto';
+}
+
+.page {
+  max-width: 1400px;
+  margin: 0 auto;
+  box-shadow: 0 0 16px #969595;
+}
+
+/* --------------------------------------------------------------------
+ |
+ | -- Header
+ |
+ ----------------------------------------------------------------------*/

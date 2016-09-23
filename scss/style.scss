@@ -1,0 +1,119 @@
+
+/* ------------------------------------------------------------------------------------------
+__________    _____ _____.___. __________.___ _______      _____  .____     ________ _____.___.
+\______   \  /  _  \\__  |   | \______   \   |\      \    /  _  \ |    |    \______ \\__  |   |
+ |       _/ /  /_\  \/   |   |  |       _/   |/   |   \  /  /_\  \|    |     |    |  \/   |   |
+ |    |   \/    |    \____   |  |    |   \   /    |    \/    |    \    |___  |    `   \____   |
+ |____|_  /\____|__  / ______|  |____|_  /___\____|__  /\____|__  /_______ \/_______  / ______|
+        \/         \/\/                \/            \/         \/        \/        \/\/       
+ -------------------------------------------------------------------------------------------- */
+
+
+@import "compass";
+
+/* ------------------
+ * VARIABLES & MIXINS
+ -------------------- */
+
+$red: #ed1c24;
+$textColor: #6d6f71;
+$linkColor: white;
+$basePadding: 15px;
+$contentMaxWidth: 1400px;
+$siteMaxWidth: 2048px;
+
+@mixin breakpoint($point) {
+	@if $point == max-xss {
+		@media (max-width: 479px) { @content; }
+	}
+	@else if $point == min-xss {
+		@media (min-width: 480px) { @content; }
+	}
+	@else if $point == max-xsm {
+		@media (max-width: 599px) { @content; }
+	}
+	@else if $point == min-xsm {
+		@media (min-width: 600px) { @content; }
+	}
+	@else if $point == max-sm {
+		@media (max-width: 767px) { @content; }
+	}
+	@else if $point == min-sm {
+		@media (min-width: 768px) { @content; }
+	}
+	@else if $point == max-md {
+		@media (max-width: 991px) { @content; }
+	}
+	@else if $point == min-md {
+		@media (min-width: 992px) { @content; }
+	}
+	@else if $point == max-lg {
+		@media (max-width: 1199px) { @content; }
+	}
+	@else if $point == min-lg {
+		@media (min-width: 1200px) { @content; }
+	}
+	@else if $point == max-lgr {
+		@media (max-width: 1399px) { @content; }
+	}
+	@else if $point == min-lgr {
+		@media (min-width: 1400px) { @content; }
+	}
+}
+
+br.min-xss,
+br.min-xsm,
+br.min-sm,
+br.min-md,
+br.min-lg {
+  display: none;
+}
+
+@include breakpoint(min-xss) {
+  br.min-xss {display:inline-block;}
+}
+@include breakpoint(min-xsm) {
+  br.min-xsm {display:inline-block;}
+}
+@include breakpoint(min-sm) {
+  br.min-sm {display:inline-block;}
+}
+@include breakpoint(min-md) {
+  br.min-md {display:inline-block;}
+}
+@include breakpoint(min-lg) {
+  br.min-lg {display:inline-block;}
+}
+
+h1 {font-size: 28px;}
+h2 {font-size: 23px;}
+h3 {font-size: 23px;}
+h4 {font-size: 20px;}
+h5 {font-size: 18px;}
+h6 {font-size: 15px;}
+
+@include breakpoint(min-sm) {
+  h1 {font-size: 36px;}
+  h2 {font-size: 32px;}
+}
+
+ // VARIABLES & MIXINS
+
+
+body {
+	font-family: 'Roboto';
+}
+
+.page {
+	max-width: 1400px;
+	margin: 0 auto;
+	box-shadow: 0 0 16px #969595;
+}
+
+/* --------------------------------------------------------------------
+ |
+ | -- Header
+ |
+ ----------------------------------------------------------------------*/
+
+
