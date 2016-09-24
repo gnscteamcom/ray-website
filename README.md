@@ -1,2 +1,2 @@
-# ray-website
+# Ray Website
 My Personal Website
