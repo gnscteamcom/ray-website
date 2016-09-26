@@ -1,7 +1,3 @@
-var config = require('./config/config');
-
-var liveReload = config.liveReload;
-
 module.exports = function(grunt) {
 	grunt.initConfig({
 		pug: {
@@ -29,7 +25,7 @@ module.exports = function(grunt) {
 				tasks: ['pug'],
 				options: {
 					event: ['changed'],
-					livereload: liveReload
+					livereload: true
 				},
 			},
 			scss: {
@@ -44,23 +40,22 @@ module.exports = function(grunt) {
 				files: 'css/*.css',
 				options: {
 					event: ['changed'],
-					livereload: liveReload
+					livereload: true
 				},
 			},
 			js: {
 				files: 'js/*.js',
 				options: {
 					event: ['changed'],
-					livereload: liveReload
+					livereload: true
 				},
 			},
 		},
 	});
 
-	
+	grunt.loadNpmTasks('grunt-contrib-compass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-pug');
-	grunt.loadNpmTasks('grunt-contrib-compass');
 
 	grunt.registerTask('default', ['pug','watch','compass']);
 };
