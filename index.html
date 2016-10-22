@@ -1,50 +1,276 @@
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <meta content="IE=edge,chrome=1,chrome=1" http-equiv="X-UA-Compatible"/>
-    <meta content="" name="description"/>
-    <meta content="width=device-width, initial-scale=1" name="viewport"/>
-    <meta content="yes" name="apple-mobile-web-app-capable"/>
-    <title>Ray Website</title>
-    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"/>
-    <link href="css/bootstrap.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Ray Rinaldy">
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/default.css" rel="stylesheet">
+    <title>Maple Music Entertainment</title>
   </head>
-  <body>
-    <div class="jumbotron text-center">
-      <h1>Test Bootstrap in Pug</h1>
-      <p>Resize this responsive page</p>
+  <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+    <div id="preloader">
+      <div id="load"></div>
     </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-4">
-          <h3>Column 1</h3>
-          <p>
-            Lorem ipsum sit dolor amet,
-            consectetur adipiscing elit..
-            
-          </p>
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header page-scroll">
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-main-collapse"><i class="fa fa-bars"></i></button><a class="navbar-brand" href="index.html">
+            <h1>MAPLE MUSIC</h1></a>
         </div>
-        <div class="col-sm-4">
-          <h3>Column 2</h3>
-          <p>
-            Lorem ipsum sit dolor amet,
-            consectetur adipiscing elit..
-            
-          </p>
-        </div>
-        <div class="col-sm-4">
-          <h3>Column 3</h3>
-          <p>
-            Lorem ipsum sit dolor amet,
-            consectetur adipiscing elit..
-            
-          </p>
+        <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#intro">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
         </div>
       </div>
-    </div>
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
+    </nav>
+    <section class="intro" id="intro">
+      <div class="slogan">
+        <h2>WELCOME TO <span class="text_color">SQUAD</span></h2>
+        <h4>MUSIC FOR A MOMENT</h4>
+      </div>
+      <div class="page-scroll"><a class="btn btn-circle" href="#service"><i class="fa fa-angle-double-down animated"></i></a></div>
+    </section>
+    <section class="home-section text-center" id="about">
+      <div class="heading-about">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <div class="wow bounceInDown" data-wow-delay="0.4s">
+                <div class="section-heading">
+                  <h2>About us</h2><i class="fa fa-2x fa-angle-down"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2 col-lg-offset-5">
+            <hr class="marginbot-50">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="wow bounceInUp" data-wow-delay="0.2s">
+              <div class="team boxed-grey">
+                <div class="inner">
+                  <h5>Anna Hanaceck</h5>
+                  <p class="subtitle">Pixel Crafter</p>
+                  <div class="avatar"><img class="img-responsive img-circle" src="img/team/1.jpg" alt=""></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="wow bounceInUp" data-wow-delay="0.5s">
+              <div class="team boxed-grey">
+                <div class="inner">
+                  <h5>Maura Daniels</h5>
+                  <p class="subtitle">Ruby on Rails</p>
+                  <div class="avatar"><img class="img-responsive img-circle" src="img/team/2.jpg" alt=""></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="wow bounceInUp" data-wow-delay="0.8s">
+              <div class="team boxed-grey">
+                <div class="inner">
+                  <h5>Jack Briane</h5>
+                  <p class="subtitle">jQuery Ninja</p>
+                  <div class="avatar"><img class="img-responsive img-circle" src="img/team/3.jpg" alt=""></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="wow bounceInUp" data-wow-delay="1s">
+              <div class="team boxed-grey">
+                <div class="inner">
+                  <h5>Tom Petterson</h5>
+                  <p class="subtitle">Typographer</p>
+                  <div class="avatar"><img class="img-responsive img-circle" src="img/team/4.jpg" alt=""></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="home-section text-center bg-gray" id="service">
+      <div class="heading-about">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <div class="wow bounceInDown" data-wow-delay="0.4s">
+                <div class="section-heading">
+                  <h2>Our Services</h2><i class="fa fa-2x fa-angle-down"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2 col-lg-offset-5">
+            <hr class="marginbot-50">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="wow fadeInLeft" data-wow-delay="0.2s">
+              <div class="service-box">
+                <div class="service-icon"><img src="img/icons/service-icon-1.png" alt=""></div>
+                <div class="service-desc">
+                  <h5>Print</h5>
+                  <p>Vestibulum tincidunt enim in pharetra malesuada. Duis semper magna metus electram accommodare.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="wow fadeInUp" data-wow-delay="0.2s">
+              <div class="service-box">
+                <div class="service-icon"><img src="img/icons/service-icon-2.png" alt=""></div>
+                <div class="service-desc">
+                  <h5>Web Design</h5>
+                  <p>Vestibulum tincidunt enim in pharetra malesuada. Duis semper magna metus electram accommodare.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="wow fadeInUp" data-wow-delay="0.2s">
+              <div class="service-box">
+                <div class="service-icon"><img src="img/icons/service-icon-3.png" alt=""></div>
+                <div class="service-desc">
+                  <h5>Photography</h5>
+                  <p>Vestibulum tincidunt enim in pharetra malesuada. Duis semper magna metus electram accommodare.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="wow fadeInRight" data-wow-delay="0.2s">
+              <div class="service-box">
+                <div class="service-icon"><img src="img/icons/service-icon-4.png" alt=""></div>
+                <div class="service-desc">
+                  <h5>Cloud System</h5>
+                  <p>Vestibulum tincidunt enim in pharetra malesuada. Duis semper magna metus electram accommodare.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="home-section text-center" id="contact">
+      <div class="heading-contact">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+              <div class="wow bounceInDown" data-wow-delay="0.4s">
+                <div class="section-heading">
+                  <h2>Get in touch</h2><i class="fa fa-2x fa-angle-down"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-2 col-lg-offset-5">
+            <hr class="marginbot-50">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="boxed-grey">
+              <div id="sendmessage">Your message has been sent. Thank you!</div>
+              <div id="errormessage"></div>
+              <form class="contactForm" id="contact-form" action="" method="post" role="form">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input class="form-control" id="name" type="text" name="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                      <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email Address</label>
+                      <div class="form-group">
+                        <input class="form-control" id="email" type="email" name="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email">
+                        <div class="validation"></div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="subject">Subject</label>
+                      <input class="form-control" id="subject" type="text" name="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject">
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="name">Message</label>
+                      <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                      <div class="validation"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <button class="btn btn-skin pull-right" id="btnContactUs" type="submit">Send Message</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="widget-contact">
+              <h5>Main Office</h5>
+              <address><strong>Maple Music Entertainment</strong><br>				  Sembawang<br>				  Singapore<br><abbr title="Phone">Jovin Ardianto:</abbr> +6584370107<br><abbr title="Phone">Mary Ivanna Sunjoko:</abbr> +6281286949287</address>
+              <address><strong>Email</strong><br><a href="mailto:entertainmentmaple@gmail.com">entertainmentmaple@gmail.com</a></address>
+              <address><strong>We're on social networks</strong><br>
+                <ul class="company-social">
+                  <li class="social-facebook"><a href="http://facebook.com/maplemusicsg" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                  <li class="social-twitter"><a href="http://twitter.com/maplemusicsg" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                  <li class="social-instagram"><a href="http://twitter.com/maplemusicsg" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                </ul>
+              </address>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-lg-12">
+            <div class="wow shake" data-wow-delay="0.4s">
+              <div class="page-scroll marginbot-30"><a class="btn btn-circle" id="totop" href="#intro"><i class="fa fa-angle-double-up animated"></i></a></div>
+            </div>
+            <p>©Maple Music Entertainment 2016.</p>
+            <div class="credits">All rights reserved.</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.scrollTo.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="contactform/contactform.js"></script>
   </body>
 </html>
