@@ -150,36 +150,46 @@ html(lang='en')
 				.row
 					.col-lg-8
 						.boxed-grey
-							#sendmessage Your message has been sent. Thank you!
-							#errormessage
-							form#contact-form.contactForm(action='', method='post', role='form')
-								.row
-									.col-md-6
-										.form-group
-											label(for='name')
-												| Name
-											input#name.form-control(type='text', name='name', placeholder='Your Name', data-rule='minlen:4', data-msg='Please enter at least 4 chars')
-											.validation
-										.form-group
-											label(for='email')
-												| Email Address
+							form#contact-form.contactForm(action='contactform/contact.php', method='post', role='form')
+								.messages
+								.controls
+									.row
+										.col-md-6
 											.form-group
-												input#email.form-control(type='email', name='email', placeholder='Your Email', data-rule='email', data-msg='Please enter a valid email')
-												.validation
-										.form-group
-											label(for='subject')
-												| Subject
-											input#subject.form-control(type='text', name='subject', placeholder='Subject', data-rule='minlen:4', data-msg='Please enter at least 8 chars of subject')
-											.validation
-									.col-md-6
-										.form-group
-											label(for='name')
-												| Message
-											textarea.form-control(name='message', rows='5', data-rule='required', data-msg='Please write something for us', placeholder='Message')
-											.validation
-									.col-md-12
-										button#btnContactUs.btn.btn-skin.pull-right(type='submit')
-											| Send Message
+												label(for='name')
+													| Name
+												input#name.form-control(type='text', name='name', placeholder='Your Name', data-rule='minlen:4', data-error='Please enter at least 4 chars' , required='required')
+												.help-block.with-errors
+
+											.form-group
+												label(for='email')
+													| Email Address
+												input#email.form-control(type='email', name='email', placeholder='Your Email', data-rule='email', data-error='Please enter a valid email' , required='required')
+												.help-block.with-errors
+
+											.form-group
+												label(for='subject')
+													| Subject
+												input#subject.form-control(type='text', name='subject', placeholder='Subject', data-rule='minlen:4', data-error='Please enter at least 8 chars of subject' , required='required')
+												.help-block.with-errors
+
+										.col-md-6
+
+											.form-group
+												label(for='phone')
+													| Phone
+												input#subject.form-control(type='tel', name='phone', placeholder='Phone Number', data-rule='minlen:4', data-error='Please enter your phone number' , required='required')
+												.help-block.with-errors
+
+											.form-group
+												label(for='name')
+													| Message
+												textarea.form-control(name='message', rows='5', data-error='Please write something for us', placeholder='Message' , required='required')
+												.help-block.with-errors
+
+										.col-md-12
+											button#btnContactUs.btn.btn-skin.pull-right(type='submit')
+												| Send Message
 					.col-lg-4
 						.widget-contact
 							h5 Main Office
@@ -229,6 +239,7 @@ html(lang='en')
 		script(src='js/bootstrap.min.js')
 		script(src='js/jquery.easing.min.js')
 		script(src='js/jquery.scrollTo.js')
+		script(src='js/validator.js')
 		script(src='js/wow.min.js')
 		script(src='js/custom.js')
-		script(src='contactform/contactform.js')
+		//- script(src='contactform/contactform.js')

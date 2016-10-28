@@ -509,6 +509,10 @@ form#contact-form input:focus, form#contact-form select:focus, form#contact-form
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+.help-block {
+  text-align: left;
+}
+
 .input-group-addon {
   background-color: #fefefe;
   border: 1px solid #eee;
@@ -790,7 +794,7 @@ Parallax
 }
 
 /* Media queries */
-@media (min-width: 767px) {
+@media (min-width: 768px) {
   .navbar {
     padding: 20px 0;
     border-bottom: 0;

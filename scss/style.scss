@@ -563,6 +563,10 @@ form#contact-form {
   }
 }
 
+.help-block{
+  text-align: left;
+}
+
 .input-group-addon {
   background-color: #fefefe;
   border: 1px solid #eee;
@@ -862,7 +866,7 @@ Parallax
 
 /* Media queries */
 
-@media (min-width: 767px) {
+@include breakpoint(min-sm) {
   .navbar {
     padding: 20px 0;
     border-bottom: 0;
