@@ -1,42 +1,245 @@
-html(lang="en")
+-
+	var images = '/images'
+	var files = '/files'
+	var css = '/css'
+	var js = '/js'
+
+doctype html
+html(lang='en')
 	head
-		meta(charset="UTF-8")
-		meta(content="IE=edge,chrome=1,chrome=1", "http-equiv"="X-UA-Compatible")
-		meta(content="", name="description")
-		meta(content="width=device-width, initial-scale=1", name="viewport")
-		meta(content="yes", name="apple-mobile-web-app-capable")
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='description', content='')
+		meta(name='author', content='Ray Rinaldy')
+		
+		link(href='css/bootstrap.css', rel='stylesheet', type='text/css')
+		link(href='css/font-awesome.css', rel='stylesheet', type='text/css')
+		link(href='css/animate.css', rel='stylesheet')
+		link(href='css/style.css', rel='stylesheet')
+		link(href='css/default.css', rel='stylesheet')
 
-		title Ray Website
+		title Maple Music Entertainment
 
-		link(href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700', rel='stylesheet')
-		link(href="css/bootstrap.css", rel="stylesheet")
-		link(href="css/style.css", rel="stylesheet")
+	body#page-top(data-spy='scroll', data-target='.navbar-custom')
+		#preloader
+			#load
 
-	body
-		.jumbotron.text-center
-			h1 Test Bootstrap in Pug
-			p Resize this responsive page
+		nav.navbar.navbar-custom.navbar-fixed-top(role='navigation')
+			.container
+				.navbar-header.page-scroll
+					button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-main-collapse')
+						i.fa.fa-bars
+					a.navbar-brand(href='index.html')
+						h1 MAPLE MUSIC
 
-		.container
-			.row
-				.col-sm-4
-					h3 Column 1
-					p.
-						Lorem ipsum sit dolor amet,
-						consectetur adipiscing elit..
+				.collapse.navbar-collapse.navbar-right.navbar-main-collapse
+					ul.nav.navbar-nav
+						li.active
+							a(href='#intro') Home
+						li
+							a(href='#about') About
+						li
+							a(href='#service') Service
+						li
+							a(href='#contact') Contact
 
-				.col-sm-4
-					h3 Column 2
-					p.
-						Lorem ipsum sit dolor amet,
-						consectetur adipiscing elit..
+		section#intro.intro
+			.slogan
+				h2
+					| MAPLE MUSIC ENTERTAINMENT
+				h4 MUSIC FOR A MOMENT
+			.page-scroll
+				a.btn.btn-circle(href='#service')
+					i.fa.fa-angle-double-down.animated
 
-				.col-sm-4
-					h3 Column 3
-					p.
-						Lorem ipsum sit dolor amet,
-						consectetur adipiscing elit..
+		section#about.home-section.text-center
+			.heading-about
+				.container
+					.row
+						.col-lg-8.col-lg-offset-2
+							.wow.bounceInDown(data-wow-delay='0.4s')
+								.section-heading
+									h2 About us
+									i.fa.fa-2x.fa-angle-down
+			.container
+				.row
+					.col-lg-2.col-lg-offset-5
+						hr.marginbot-50
+				.row
+					.col-sm-6
+						.wow.bounceInUp(data-wow-delay='0.2s')
+							.team.boxed-grey
+								.inner
+									h5 Jovin Ardianto
+									p.subtitle Guitarist
+									.avatar
+										img.img-responsive.img-circle(src='img/team/1.jpg', alt='')
+					.col-sm-6
+						.wow.bounceInUp(data-wow-delay='0.5s')
+							.team.boxed-grey
+								.inner
+									h5 Mary Ivana Sunjoko
+									p.subtitle Violinist
+									.avatar
+										img.img-responsive.img-circle(src='img/team/2.jpg', alt='')
 
-		script(src="js/jquery.js")
-		script(src="js/bootstrap.js")
-	
+		section#service.home-section.text-center.bg-gray
+			.heading-about
+				.container
+					.row
+						.col-lg-8.col-lg-offset-2
+							.wow.bounceInDown(data-wow-delay='0.4s')
+								.section-heading
+									h2 Our Services
+									i.fa.fa-2x.fa-angle-down
+			.container
+				.row
+					.col-lg-2.col-lg-offset-5
+						hr.marginbot-50
+				.row
+					.col-sm-6.col-md-3
+						.wow.fadeInLeft(data-wow-delay='0.2s')
+							.service-box
+								.service-icon
+									img(src='img/icons/service-icon-1.png', alt='')
+								.service-desc
+									h5 Music
+									p
+										| Vestibulum tincidunt enim in pharetra malesuada. Duis semper magna metus electram accommodare.
+					.col-sm-6.col-md-3
+						.wow.fadeInUp(data-wow-delay='0.2s')
+							.service-box
+								.service-icon
+									img(src='img/icons/service-icon-2.png', alt='')
+								.service-desc
+									h5 Service ++
+									p
+										| Vestibulum tincidunt enim in pharetra malesuada. Duis semper magna metus electram accommodare.
+					.col-sm-6.col-md-3
+						.wow.fadeInUp(data-wow-delay='0.2s')
+							.service-box
+								.service-icon
+									img(src='img/icons/service-icon-3.png', alt='')
+								.service-desc
+									h5 Photography
+									p
+										| Vestibulum tincidunt enim in pharetra malesuada. Duis semper magna metus electram accommodare.
+					.col-sm-6.col-md-3
+						.wow.fadeInRight(data-wow-delay='0.2s')
+							.service-box
+								.service-icon
+									img(src='img/icons/service-icon-4.png', alt='')
+								.service-desc
+									h5 Phone Sex
+									p
+										| Vestibulum tincidunt enim in pharetra malesuada. Duis semper magna metus electram accommodare.
+
+		section#contact.home-section.text-center
+			.heading-contact
+				.container
+					.row
+						.col-lg-8.col-lg-offset-2
+							.wow.bounceInDown(data-wow-delay='0.4s')
+								.section-heading
+									h2 Get in touch
+									i.fa.fa-2x.fa-angle-down
+			.container
+				.row
+					.col-lg-2.col-lg-offset-5
+						hr.marginbot-50
+				.row
+					.col-lg-8
+						.boxed-grey
+							form#contact-form.contactForm(action='contactform/contact.php', method='post', role='form')
+								.messages
+								.controls
+									.row
+										.col-md-6
+											.form-group
+												label(for='name')
+													| Name
+												input#name.form-control(type='text', name='name', placeholder='Your Name', data-rule='minlen:4', data-error='Please enter at least 4 chars' , required='required')
+												.help-block.with-errors
+
+											.form-group
+												label(for='email')
+													| Email Address
+												input#email.form-control(type='email', name='email', placeholder='Your Email', data-rule='email', data-error='Please enter a valid email' , required='required')
+												.help-block.with-errors
+
+											.form-group
+												label(for='subject')
+													| Subject
+												input#subject.form-control(type='text', name='subject', placeholder='Subject', data-rule='minlen:4', data-error='Please enter at least 8 chars of subject' , required='required')
+												.help-block.with-errors
+
+										.col-md-6
+
+											.form-group
+												label(for='phone')
+													| Phone
+												input#subject.form-control(type='tel', name='phone', placeholder='Phone Number', data-rule='minlen:4', data-error='Please enter your phone number' , required='required')
+												.help-block.with-errors
+
+											.form-group
+												label(for='name')
+													| Message
+												textarea.form-control(name='message', rows='5', data-error='Please write something for us', placeholder='Message' , required='required')
+												.help-block.with-errors
+
+										.col-md-12
+											button#btnContactUs.btn.btn-skin.pull-right(type='submit')
+												| Send Message
+					.col-lg-4
+						.widget-contact
+							h5 Main Office
+							address
+								strong Maple Music Entertainment
+								br
+								| 				  Sembawang
+								br
+								| 				  Singapore
+								br
+								abbr(title='Phone') Jovin Ardianto:
+								|  +6584370107
+								br
+								abbr(title='Phone') Mary Ivanna Sunjoko:
+								|  +6281286949287
+							address
+								strong Email
+								br
+								a(href='mailto:entertainmentmaple@gmail.com') entertainmentmaple@gmail.com
+							address
+								strong We're on social networks
+								br
+								ul.company-social
+									li.social-facebook
+										a(href='http://facebook.com/maplemusicsg', target='_blank')
+											i.fa.fa-facebook
+									li.social-twitter
+										a(href='http://twitter.com/maplemusicsg', target='_blank')
+											i.fa.fa-twitter
+									li.social-instagram
+										a(href='http://twitter.com/maplemusicsg', target='_blank')
+											i.fa.fa-instagram
+
+		footer
+			.container
+				.row
+					.col-md-12.col-lg-12
+						.wow.shake(data-wow-delay='0.4s')
+							.page-scroll.marginbot-30
+								a#totop.btn.btn-circle(href='#intro')
+									i.fa.fa-angle-double-up.animated
+						p ©Maple Music Entertainment 2016.
+						.credits
+							| All rights reserved.
+
+		script(src='js/jquery.min.js')
+		script(src='js/bootstrap.min.js')
+		script(src='js/jquery.easing.min.js')
+		script(src='js/jquery.scrollTo.js')
+		script(src='js/validator.js')
+		script(src='js/wow.min.js')
+		script(src='js/custom.js')
+		//- script(src='contactform/contactform.js')
