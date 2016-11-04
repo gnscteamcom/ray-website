@@ -10,6 +10,10 @@ __________    _____ _____.___. __________.___ _______      _____  .____     ____
  * VARIABLES & MIXINS
  -------------------- */
 @import url("https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic|Montserrat:700|Merriweather:400italic");
+@font-face {
+  font-family: Bromello;
+  src: url(../fonts/bromello.ttf);
+}
 br.min-xss,
 br.min-xsm,
 br.min-sm,
@@ -136,8 +140,10 @@ a:hover, a:focus {
 }
 .navbar-brand h1 {
   color: #fff;
-  font-size: 20px;
+  font-size: 26px;
   line-height: 40px;
+  font-family: Bromello;
+  text-transform: none;
 }
 .navbar-brand:focus {
   outline: 0;
@@ -383,16 +389,15 @@ hr {
   color: #FFF;
   text-shadow: none;
   font-size: 60px;
-  line-height: 60px;
   font-weight: 700;
-  font-family: Montserrat, sans-serif;
+  font-family: Bromello;
   background-color: transparent;
   text-decoration: none;
-  text-transform: uppercase;
   border-width: 0px;
   border-color: #000;
   border-style: none;
   text-shadow: -1px 0 1px #000;
+  text-transform: none;
 }
 .intro .slogan h4 {
   color: #fff;

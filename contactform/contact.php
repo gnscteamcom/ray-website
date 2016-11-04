@@ -1,9 +1,9 @@
 <?php
 
 // configure
-$from = 'Demo contact form <demo@domain.com>'; //the email address that will be in the From field of the email. Important: To avoid being marked as spam, use email on your domain
+$from = $_POST['email']; //the email address that will be in the From field of the email. Important: To avoid being marked as spam, use email on your domain
 $sendTo = 'entertainmentmaple@gmail.com'; //the email address that will receive the email with the output of the form. Can be your personal address or can be same as the address as in $from variable. Make sure this email exists.
-$subject = 'New message from contact form'; //the subject of the email
+$subject = $_POST['subject']; //the subject of the email
 $fields = array('name' => 'Name', 'email' => 'Email', 'subject' => 'Subject', 'phone' => 'Phone', 'message' => 'Message'); // array variable name => Text to appear in email
 $okMessage = 'Contact form successfully submitted. Thank you, I will get back to you soon!'; //the message text displayed on the web page when the message is successfully sent
 $errorMessage = 'There was an error while submitting the form. Please try again later'; //the message text displayed on the web page when the message is error
