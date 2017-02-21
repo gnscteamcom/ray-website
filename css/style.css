@@ -1241,9 +1241,10 @@ ul.portfolioContainer li:hover span.hoverBox .linKed{
 	}
 	
 	.bannerText {
-		top: 25%;
+		/*top: 25%;*/
 		padding-top:15px;
 		padding-bottom:15px;
+		margin: 0 20px;
 	}
 	.bannerText h1 {
 		font-size: 42px;
@@ -1260,6 +1261,10 @@ ul.portfolioContainer li:hover span.hoverBox .linKed{
 		line-height: 17px;
 		padding-top:11px;
 		padding-bottom:11px;
+	}
+	.quote h3{
+		margin-top: 35px;
+		font-size: 24px;
 	}
 }
 
