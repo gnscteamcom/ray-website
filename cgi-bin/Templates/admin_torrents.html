@@ -1,0 +1,54 @@
+<H1><TMPL_VAR lang_torrents></H1>
+
+<Table class="tbl1">
+<TR>
+    <TH>Server</TH>
+    <TH>Torrent engine</TH>
+    <TH></TH>
+</TR>
+<TMPL_LOOP servers>
+<TR align=center>
+    <TD><b><TMPL_VAR srv_name></b></TD>
+    <TMPL_IF active>
+    <TD><b style="color:green">Working</b></TD>
+    <TD><input type="button" value="Stop engine" onClick="window.location='?op=admin_torrents&kill=1&srv_id=<TMPL_VAR srv_id>';" class="btn2"></TD>
+    <TMPL_ELSE>
+    <TD><b style="color:red">Disabled</b></TD>
+    <TD><input type="button" value="Start engine" onClick="window.location='<TMPL_VAR srv_cgi_url>/Torrents/bitflu.pl';" class="btn2"></TD>
+    </TMPL_IF>
+</TR>
+</TMPL_LOOP>
+</Table>
+
+<br><br>
+
+<Table class="tbl1">
+<TR><TH colspan=8>Torrents running</TH></TR>
+<TR>
+    <TH>Torrent</TH>
+    <TH>Progress</TH>
+    <TH>Download</TH>
+    <TH>Upload</TH>
+    <TH>Working</TH>
+    <TH>User</TH>
+    <TH>SrvID</TH>
+    <TH></TH>
+</TR>
+<TMPL_LOOP torrents>
+<TR>
+    <TD onmouseover="return tooltip('<TMPL_VAR file_list>','Torrent files');" onmouseout="return hideTip();"><TMPL_VAR title></TD>
+    <TD align=right><TMPL_VAR done> of <TMPL_VAR total> Mb (<TMPL_VAR percent>%)</TD>
+    <TD align=right><TMPL_VAR down_speed> Kb/s</TD>
+    <TD align=right><TMPL_VAR up_speed> Kb/s</TD>
+    <TD><TMPL_VAR working></TD>
+    <TD><TMPL_VAR usr_login></TD>
+    <TD><TMPL_VAR srv_id></TD>
+    <TD><a href="?op=admin_torrents;del_torrent=<TMPL_VAR sid>" onClick="return confirm('<TMPL_VAR lang_delete_file>')"><img src="<TMPL_VAR site_url>/images/del.gif" border=0></a></TD>
+</TR>
+</TMPL_LOOP>
+</Table>
+<br><br>
+<script type="text/javascript" src="<TMPL_VAR site_url>/tips.js"></script>
+<div id="tiplayer" style="position:absolute; visibility:hidden; z-index:10000;"></div>
+
+

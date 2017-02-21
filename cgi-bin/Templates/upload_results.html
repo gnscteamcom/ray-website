@@ -1,0 +1,154 @@
+<script type="text/javascript">
+document.write('<style type="text/css">.tabber{display:none;}<\/style>');
+var tab_cookie='tab_upres';
+</script>
+
+<h2><TMPL_VAR lang_files_uploaded></h2>
+
+<TMPL_LOOP links>
+
+<table cellspacing=0 cellpadding=3 border=0 class="result_slot" width=640>
+<tr>
+    <td align=right width="5%" nowrap><b><TMPL_VAR lang_file_name>:</b></td>
+    <td><a href="<TMPL_VAR download_link>"><TMPL_VAR file_name></a><TMPL_IF my_login><TMPL_IF file_code> &nbsp; <a href="?op=file_edit&amp;file_code=<TMPL_VAR file_code>"><img src="<TMPL_VAR site_url>/images/edit.gif" border=0></a></TMPL_IF></TMPL_IF></td>
+</tr>
+<TMPL_IF error>
+<tr>
+    <td colspan=2><b class="err">Error:</b> <TMPL_VAR error></td>
+</tr>
+<TMPL_ELSE>
+
+<tr>
+    <td align=right><b><TMPL_VAR lang_file_size>:</b></td>
+    <td><TMPL_VAR file_size></td>
+</tr>
+<TMPL_IF descr>
+<tr>
+    <td align=right><b><TMPL_VAR lang_file_descr>:</b></td>
+    <td><TMPL_VAR file_descr></td>
+</tr>
+</TMPL_IF>
+
+<TMPL_IF image_url>
+<tr>
+    <td align=right nowrap><b><TMPL_VAR lang_direct_link>:</b></td>
+    <td><input type="text" style="width:99%" onFocus="copy(this);" value="<TMPL_VAR image_url>"></td>
+</tr>
+</TMPL_IF>
+<TMPL_IF deurl>
+<tr>
+    <td align=right nowrap><b><TMPL_VAR lang_short_link>:</b></td>
+    <td><input type="text" style="width:99%" onFocus="copy(this);" value="<TMPL_VAR deurl>"></td>
+</tr>
+</TMPL_IF>
+
+<tr><td colspan=2>
+<div class="tabber" style="text-align:left;">
+
+<div class="tabbertab">
+<h2><TMPL_VAR lang_download_link></h2>
+<textarea id="ic0-<TMPL_VAR file_id>" style="width:98%;" rows=3 onFocus="copy(this);"><TMPL_VAR download_link></textarea>
+<div id="c0-<TMPL_VAR file_id>" class="btndiv"><TMPL_VAR lang_copy_clipboard></div>
+</div>
+
+<TMPL_IF thumb_url>
+
+<div class="tabbertab">
+<h2><TMPL_VAR lang_forum_code></h2>
+<textarea id="ic1-<TMPL_VAR file_id>" style="width:98%;" rows=3 onFocus="copy(this);">[URL=<TMPL_VAR download_link>][IMG]<TMPL_VAR thumb_url>[/IMG][/URL]</textarea>
+<div id="c1-<TMPL_VAR file_id>" class="btndiv"><TMPL_VAR lang_copy_clipboard></div>
+</div>
+
+<div class="tabbertab">
+<h2><TMPL_VAR lang_html_code></h2>
+<textarea id="ic2-<TMPL_VAR file_id>" style="width:98%;" rows=3 onFocus="copy(this);"><a href="<TMPL_VAR download_link>"><img src="<TMPL_VAR thumb_url>" border=0></a></textarea>
+<div id="c2-<TMPL_VAR file_id>" class="btndiv"><TMPL_VAR lang_copy_clipboard></div>
+</div>
+
+<TMPL_ELSE>
+
+<div class="tabbertab">
+<h2><TMPL_VAR lang_forum_link></h2>
+<textarea id="ic1-<TMPL_VAR file_id>" style="width:98%;" rows=3 onFocus="copy(this);">[URL=<TMPL_VAR download_link>]<TMPL_VAR file_name> - <TMPL_VAR file_size>[/URL]</textarea>
+<div id="c1-<TMPL_VAR file_id>" class="btndiv"><TMPL_VAR lang_copy_clipboard></div>
+</div>
+
+<div class="tabbertab">
+<h2><TMPL_VAR lang_html_code></h2>
+<textarea id="ic2-<TMPL_VAR file_id>" style="width:98%;" rows=3 onFocus="copy(this);"><a href="<TMPL_VAR download_link>"><TMPL_VAR file_name> - <TMPL_VAR file_size></a></textarea>
+<div id="c2-<TMPL_VAR file_id>" class="btndiv"><TMPL_VAR lang_copy_clipboard></div>
+</div>
+
+</TMPL_IF>
+
+<div class="tabbertab">
+<h2><TMPL_VAR lang_delete_link></h2>
+<textarea id="ic3-<TMPL_VAR file_id>" style="width:98%;" rows=3 onFocus="copy(this);"><TMPL_VAR delete_link></textarea>
+<div id="c3-<TMPL_VAR file_id>" class="btndiv"><TMPL_VAR lang_copy_clipboard></div>
+</div>
+
+<TMPL_IF video_embed_code>
+<div class="tabbertab">
+<h2><TMPL_VAR lang_emded_code></h2>
+<textarea id="ic4-<TMPL_VAR file_id>" style="width:98%;" rows=3 onFocus="copy(this);"><IFRAME SRC="<TMPL_VAR site_url>/embed-<TMPL_VAR file_code>.html" FRAMEBORDER=0 MARGINWIDTH=0 MARGINHEIGHT=0 SCROLLING=NO WIDTH=<TMPL_VAR vid_width> HEIGHT=<TMPL_VAR vid_height>></IFRAME></textarea>
+<div id="c4-<TMPL_VAR file_id>" class="btndiv"><TMPL_VAR lang_copy_clipboard></div>
+</div>
+</TMPL_IF>
+
+</div>
+</td></tr>
+
+
+
+</TMPL_IF>
+</table>
+<br><br>
+</TMPL_LOOP>
+
+
+<script type="text/javascript" src="<TMPL_VAR site_url>/ZeroClipboard.js"></script>
+<script type="text/javascript" language="JavaScript">
+function init(fid)
+{
+    ZeroClipboard.setMoviePath( '<TMPL_VAR site_url>/ZeroClipboard.swf' );
+    clip = new ZeroClipboard.Client();
+    clip.setHandCursor( true );
+    clip.addEventListener( 'onComplete', function(client) { afterCopy() } );
+
+    list = document.getElementsByTagName('div');
+    clip_curr='';
+
+    for(i=0;i<list.length;i++)
+    {
+        if(list[i].className=='btndiv')
+        {
+            list[i].onmouseover = function()
+            {
+                clip.setText( $$('i'+this.id).value );
+                clip_curr=this.id;
+                if (clip.div) {
+                    clip.receiveEvent('mouseout', null);
+                    clip.reposition(this);
+				}
+				else clip.glue(this);
+                clip.receiveEvent('mouseover', null);
+            }
+        }
+    }
+}
+function afterCopy(btn)
+{
+    list = document.getElementsByTagName('div');
+    for(i=0;i<list.length;i++)
+    {
+        if(list[i].className=='btndiv')
+        {
+            list[i].innerHTML='<TMPL_VAR lang_copy_clipboard>';
+        }
+    }
+    $$(clip_curr).innerHTML='<TMPL_VAR lang_copied_clipboard>';
+}
+
+window.onload=function(){init();}
+</script>
+<script language="JavaScript" type="text/javascript" src="<TMPL_VAR site_url>/tabber.js"></script>

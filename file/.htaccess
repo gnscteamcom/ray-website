@@ -1,0 +1,7 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^file\.rayrinaldy\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.file\.rayrinaldy\.com$
+RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
+RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^(.*)$ "http\:\/\/rayrinaldy\.hostei\.com\/$1" [R=301,L]

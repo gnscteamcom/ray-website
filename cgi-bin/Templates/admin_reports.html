@@ -1,0 +1,35 @@
+<h2><TMPL_VAR lang_adm_abuse></h2>
+<TMPL_IF history>
+<a href="?op=admin_reports"><TMPL_VAR lang_adm_abuse></a>
+<TMPL_ELSE>
+<a href="?op=admin_reports&history=1"><TMPL_VAR lang_reports_history></a>
+</TMPL_IF>
+<br><br>
+<TMPL_LOOP list>
+<Table cellpadding=2 cellspacing=1 class="tbl1" width="500">
+<TR><TD>
+<b><TMPL_VAR lang_file_name>:</b> <TMPL_IF file_code><a href="<TMPL_VAR site_url>/<TMPL_VAR file_code>/<TMPL_VAR file_name>.html" target="_blank"><TMPL_VAR file_name></a> (<TMPL_VAR file_size2>, <TMPL_VAR file_downloads> <TMPL_VAR lang_downloads>)<TMPL_ELSE><TMPL_VAR filename> (<TMPL_VAR lang_rep_file_deleted>)</TMPL_IF>
+&nbsp; <a href="?op=admin_reports&report_delete=<TMPL_VAR id>&history=<TMPL_VAR history>"><img src="<TMPL_VAR site_url>/images/del.gif" border=0></a><br>
+<b><TMPL_VAR lang_uploaded_by>:</b> <a href="?op=admin_files&usr_id=<TMPL_VAR usr_id>"><TMPL_VAR usr_login></a><br>
+<b><TMPL_VAR lang_reported_by>:</b> <TMPL_VAR name> (<TMPL_VAR email>, <TMPL_VAR ip>)<br>
+<b><TMPL_VAR lang_created>:</b> <TMPL_VAR created><br>
+<b><TMPL_VAR lang_reason>:</b> <TMPL_VAR reason>
+<br>
+<i><TMPL_VAR info></i>
+<br>
+<TMPL_IF file_code>
+<form>
+<input type="hidden" name="op" value="admin_reports">
+<input type="hidden" name="nuke_file_id" value="<TMPL_VAR file_id>">
+<input type="submit" value="<TMPL_VAR lang_del_file>">
+<input type="checkbox" name="ban" value=1><TMPL_VAR lang_ban_file>
+</form>
+</TMPL_IF>
+
+<TMPL_IF status_PENDING><br><a href="?op=admin_reports&report_hide=<TMPL_VAR id>"><TMPL_VAR decline_report></a></TMPL_IF>
+<TMPL_UNLESS status_PENDING><b><TMPL_VAR status></b></TMPL_UNLESS>
+</TD></TR>
+</Table>
+<br>
+</TMPL_LOOP>
+<TMPL_VAR paging>

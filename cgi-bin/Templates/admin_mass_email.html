@@ -1,0 +1,13 @@
+<h2>Send mass e-mail to users</h2>
+<Form method="POST">
+<input type="hidden" name="op" value="admin_mass_email">
+<Table class="tbl1" cellpadding=2 cellspacing=1>
+<TR><TD align=right><b>Subject:</b></TD><TD><input type="text" name="subject" size=36></TD></TR>
+<TR><TD align=right><b>Filter:</b></TD><TD><input type="checkbox" name="premium_only" value="1" id="prem"><label for="prem">Premium Users Only</label></TD></TR>
+<TR><TD align=right><b>Text message:</b></TD><TD><Textarea name="body" cols=42 rows=7></Textarea>
+<br>Use <b>%username%</b> to insert login into message body
+</TD></TR>
+</Table>
+<input type="submit" name="send" value=" Send e-mails ">
+</Form>
+<br><br>

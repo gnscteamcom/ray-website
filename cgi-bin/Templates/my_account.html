@@ -1,0 +1,121 @@
+<Table>
+<TR><TD><TMPL_VAR lang_username>:</TD><TD><b><TMPL_VAR my_login></b></TD><TD></TD></TR>
+
+<TMPL_IF premium>
+<TR><TD><TMPL_VAR lang_prem_valid_until>:</TD><TD><b><TMPL_VAR premium_expire></b></TD><TD><input type="button" class="btn2" value="<TMPL_VAR lang_extend_account>" onClick="document.location='?op=payments'"></TD></TR>
+</TMPL_IF>
+
+<TR><TD><TMPL_VAR lang_you_collected>:</TD><TD><b>$<TMPL_VAR usr_money></b></TD><TD><input type="button" class="btn2" value="<TMPL_VAR lang_request_payout>" onClick="document.location='?op=request_money'"></TD></TR>
+
+<TR><TD><TMPL_VAR lang_used_disk_space>:</TD><TD><b><TMPL_VAR total_size><TMPL_IF disk_space> <TMPL_VAR lang_of> <TMPL_VAR disk_space></TMPL_IF></b></TD></TR>
+<TR><TD><TMPL_VAR lang_traffic_available>:</TD><TD><b><TMPL_VAR traffic_left> Mb</b></TD></TR>
+<TR><TD><TMPL_VAR lang_my_public_link>:</TD><TD colspan=2><a href="<TMPL_VAR site_url>/users/<TMPL_VAR usr_login>" target=_blank><TMPL_VAR site_url>/users/<TMPL_VAR usr_login></a></TD></TR>
+<TR><TD><TMPL_VAR lang_my_affiliate_link>:</TD><TD colspan=2><a href="<TMPL_VAR site_url>/free<TMPL_VAR usr_id>.html"><TMPL_VAR site_url>/free<TMPL_VAR usr_id>.html</a></TD></TR>
+<TR><TD><TMPL_VAR lang_my_referrals>:</TD><TD><a href="?op=my_referrals"><TMPL_VAR referrals></a></TD></TR>
+</Table>
+
+<br>
+
+<TMPL_IF msg><font class="ok"><TMPL_VAR msg></font><br><br></TMPL_IF>
+
+
+
+<Form method="POST" onSubmit="if(this.password_new.value!=this.password_new2.value){alert('<TMPL_VAR lang_pass_dont_match>');return false;}return true;">
+<input type="hidden" name="op" value="my_account">
+<Table class="tbl1" cellpadding=2 cellspacing=1 width=420>
+<TR class="hdr"><TD colspan=2><TMPL_VAR lang_my_settigns></TD></TR>
+<TMPL_IF login_change>
+<TR><TD align=right><b><TMPL_VAR lang_username></b></TD><TD><input type="text" name="usr_login" value="<TMPL_VAR usr_login>" style="width:97%;"></TD></TR>
+</TMPL_IF>
+<TR><TD align=right><b><TMPL_VAR lang_email></b></TD><TD><input type="text" name="usr_email" value="<TMPL_VAR usr_email>" style="width:97%;"></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_new_password></b></TD><TD><input type="password" name="password_new" size="12"></TD></TR>
+<TR><TD align=right width="1%" nowrap><b><TMPL_VAR lang_retype_new_pass></b></TD><TD><input type="password" name="password_new2" size="12"></TD></TR>
+</Table>
+
+<Table class="tbl1" cellpadding=2 cellspacing=1 width=420>
+<TR class="hdr"><TD colspan=2>Configuration</TD></TR>
+<TMPL_IF premium><TR><TD colspan=2><input type="checkbox" name="usr_direct_downloads" id="cdl" value="1"<TMPL_IF usr_direct_downloads> checked</TMPL_IF>> <label for="cdl"><b><TMPL_VAR lang_direct_downloads></b></label> <small>(<TMPL_VAR lang_premium_only>)</small></TD></TR></TMPL_IF>
+<TR><TD align=right><b><TMPL_VAR lang_payment_info></b></TD><TD nowrap>
+<input type="text" name="usr_pay_email" value="<TMPL_VAR usr_pay_email>" size=26>
+<select name="usr_pay_type">
+<TMPL_LOOP payout_list>
+<option value="<TMPL_VAR name>"<TMPL_IF checked> selected</TMPL_IF>><TMPL_VAR name></option>
+</TMPL_LOOP>
+</select>
+</TD></TR>
+<TMPL_IF m_w>
+<TR class="hdr"><TD colspan=2><TMPL_VAR lang_twitter_account></TD></TR>
+<TR><TD colspan=2 align=center>
+<TMPL_IF twitter_login>
+Twitter authentification received.<br>
+<input type="button" value="Disable Twitter posting" onClick="window.location='?op=my_account&twitter_stop=1'">
+<br><input type="checkbox" name="twitter_filename" value="1" id="twi3"<TMPL_IF twitter_filename> checked</TMPL_IF>><label for="twi3">Post filename before URL</label>
+<TMPL_ELSE>
+<input type="button" value="Get Twitter authentification" onClick="window.location='?op=my_account&twitter1=1'">
+</TMPL_IF>
+<br><small><TMPL_VAR lang_twitter_info></small>
+</TD></TR>
+</TMPL_IF>
+</Table>
+
+<br><input type="submit" name="settings_save" value="<TMPL_VAR lang_save_settings>"><br><br>
+
+<TMPL_IF remote_url>
+<Table class="tbl1" cellpadding=2 cellspacing=1 width=420>
+<TR class="hdr"><TD colspan=2><TMPL_VAR lang_remote_premiums></TD></TR>
+<TR><TD colspan=2 align=center>Format: login:password</TD></TR>
+<TR>
+    <TD>Rapidshare.com</TD>
+    <TD><input type="text" name="rs_logins" value="<TMPL_VAR rs_logins>" size=36></TD>
+</TR>
+<TR>
+    <TD>Megaupload.com</TD>
+    <TD><input type="text" name="mu_logins" value="<TMPL_VAR mu_logins>" size=36></TD>
+</TR>
+<TR>
+    <TD>Netload.in</TD>
+    <TD><input type="text" name="nl_logins" value="<TMPL_VAR nl_logins>" size=36></TD>
+</TR>
+<TR>
+    <TD>Hotfile.com</TD>
+    <TD><input type="text" name="hf_logins" value="<TMPL_VAR hf_logins>" size=36></TD>
+</TR>
+<TR>
+    <TD>Mediafire.com</TD>
+    <TD><input type="text" name="mf_logins" value="<TMPL_VAR mf_logins>" size=36></TD>
+</TR>
+<TR>
+    <TD>4shared.com</TD>
+    <TD><input type="text" name="fs_logins" value="<TMPL_VAR fs_logins>" size=36></TD>
+</TR>
+<TR>
+    <TD>Depositfiles.com</TD>
+    <TD><input type="text" name="df_logins" value="<TMPL_VAR df_logins>" size=36></TD>
+</TR>
+<TR>
+    <TD>Uploading.com</TD>
+    <TD><input type="text" name="ug_logins" value="<TMPL_VAR ug_logins>" size=36></TD>
+</TR>
+<TR>
+    <TD>Filefactory.com</TD>
+    <TD><input type="text" name="ff_logins" value="<TMPL_VAR ff_logins>" size=36></TD>
+</TR>
+<TR>
+    <TD>Easy-share.com</TD>
+    <TD><input type="text" name="es_logins" value="<TMPL_VAR es_logins>" size=36></TD>
+</TR>
+<TR>
+    <TD>Sharingmatrix.com</TD>
+    <TD><input type="text" name="sm_logins" value="<TMPL_VAR sm_logins>" size=36></TD>
+</TR>
+<TR>
+    <TD>Fileserve.com</TD>
+    <TD><input type="text" name="fe_logins" value="<TMPL_VAR fe_logins>" size=36></TD>
+</TR>
+</Table>
+</TMPL_IF>
+
+<br><input type="submit" name="settings_save" value="<TMPL_VAR lang_save_settings>">
+</Form>
+
+<br><br>

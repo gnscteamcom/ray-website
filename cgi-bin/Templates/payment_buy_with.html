@@ -1,0 +1,31 @@
+<Table class="tbl1" cellpadding=3 cellspacing=1>
+<TR class="hdr">
+<TD><TMPL_VAR lang_price></TD>
+<TD><TMPL_VAR lang_valid_for></TD>
+<TMPL_IF paypal_email><TD>&nbsp;</TD></TMPL_IF>
+<TMPL_IF two_checkout_sid><TD></TD></TMPL_IF>
+<TMPL_IF alertpay_email><TD>&nbsp;</TD></TMPL_IF>
+<TMPL_IF webmoney_merchant_id><TD></TD></TMPL_IF>
+<TMPL_IF smscoin_id><TD></TD></TMPL_IF>
+<TMPL_IF daopay_app_id><TD></TD></TMPL_IF>
+<TMPL_IF plimus_contract_id><TD></TD></TMPL_IF>
+<TMPL_IF moneybookers_email><TD></TD></TMPL_IF>
+<TMPL_IF cashu_merchant_id><TD></TD></TMPL_IF>
+</TR>
+<TMPL_LOOP plans>
+<TR align=center>
+<TD><TMPL_VAR amount> <TMPL_VAR currency_code></TD>
+<TD><b><TMPL_VAR days> <TMPL_VAR lang_days></b></TD>
+<TMPL_IF paypal_email><TD><a href="<TMPL_VAR site_url>/?op=payments&amp;amount=<TMPL_VAR amount>&amp;type=paypal&amp;r=<TMPL_VAR rand>"><img src="<TMPL_VAR site_url>/images/buy_paypal.gif" border=0 alt="PayPal"></a></TD></TMPL_IF>
+<TMPL_IF two_checkout_sid><TD><a href="<TMPL_VAR site_url>/?op=payments&amp;amount=<TMPL_VAR amount>&amp;type=2co&amp;r=<TMPL_VAR rand>"><img src="<TMPL_VAR site_url>/images/buy_2co.gif" border=0 alt="2Checkout"></a></TD></TMPL_IF>
+<TMPL_IF alertpay_email><TD><a href="<TMPL_VAR site_url>/?op=payments&amp;amount=<TMPL_VAR amount>&amp;type=alertpay&amp;r=<TMPL_VAR rand>"><img src="<TMPL_VAR site_url>/images/buy_alertpay.gif" border=0 alt="AlertPay"></a></TD></TMPL_IF>
+<TMPL_IF webmoney_merchant_id><TD><a href="<TMPL_VAR site_url>/?op=payments&amp;amount=<TMPL_VAR amount>&amp;type=wmz&amp;r=<TMPL_VAR rand>"><img src="<TMPL_VAR site_url>/images/buy_wmz.gif" border=0 alt="Webmoney"></a></TD></TMPL_IF>
+<TMPL_IF smscoin_id><TD><a href="<TMPL_VAR site_url>/?op=payments&amp;amount=<TMPL_VAR amount>&amp;type=smscoin&amp;r=<TMPL_VAR rand>"><img src="<TMPL_VAR site_url>/images/buy_smscoin.gif" border=0 alt="SMSCoin"></a></TD></TMPL_IF>
+<TMPL_IF daopay_app_id><TD><a href="<TMPL_VAR site_url>/?op=payments&amp;amount=<TMPL_VAR amount>&amp;type=daopay&amp;r=<TMPL_VAR rand>"><img src="<TMPL_VAR site_url>/images/buy_daopay.gif" border=0 alt="DaoPay"></a></TD></TMPL_IF>
+<TMPL_IF plimus_contract_id><TD><a href="<TMPL_VAR site_url>/?op=payments&amp;amount=<TMPL_VAR amount>&amp;type=plimus&amp;r=<TMPL_VAR rand>"><img src="<TMPL_VAR site_url>/images/buy_plimus.gif" border=0 alt="Plimus"></a></TD></TMPL_IF>
+<TMPL_IF moneybookers_email><TD><a href="<TMPL_VAR site_url>/?op=payments&amp;amount=<TMPL_VAR amount>&amp;type=moneybookers&amp;r=<TMPL_VAR rand>"><img src="<TMPL_VAR site_url>/images/buy_moneybookers.gif" border=0 alt="Moneybookers"></a></TD></TMPL_IF>
+<TMPL_IF cashu_merchant_id><TD><a href="<TMPL_VAR site_url>/?op=payments&amp;amount=<TMPL_VAR amount>&amp;type=cashu&amp;r=<TMPL_VAR rand>"><img src="<TMPL_VAR site_url>/images/buy_cashu.gif" border=0 alt="CashU"></a></TD></TMPL_IF>
+</TR>
+</TMPL_LOOP>
+</Table>
+<br><br>

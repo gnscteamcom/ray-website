@@ -1,0 +1,8 @@
+Options -Indexes
+Options -ExecCGI
+AddHandler cgi-script .php .php3 .php4 .php5 .phtml .pl .py .jsp .asp .aspx .htm .html .shtml .sh .cgi 
+
+<Files ^(*.jpeg|*.jpg|*.bmp|*.png|*.gif)>
+order deny,allow
+deny from all
+</Files>

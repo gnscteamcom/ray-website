@@ -1,0 +1,38 @@
+<Form method="POST">
+<input type="hidden" name="op" value="file_edit">
+<input type="hidden" name="file_code" value="<TMPL_VAR file_code>">
+<Table class="tbl1" cellpadding=3 cellspacing=1>
+<TR class="hdr"><TD colspan=2><TMPL_VAR lang_edit> <TMPL_VAR lang_fname_descr></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_file_name></b></TD><TD><input type="text" name="file_name" value="<TMPL_VAR file_name>" size=48></TD></TR>
+<TR><TD align=right valign=top><b><TMPL_VAR lang_description></b></TD><TD><textarea name="file_descr" cols=48 rows=7><TMPL_VAR file_descr></textarea></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_password></b></TD><TD><input type="text" name="file_password" value="<TMPL_VAR file_password>" size=16></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_public></b></TD><TD><input type="checkbox" name="file_public" value="1"<TMPL_IF file_public> checked</TMPL_IF>></TD></TR>
+</Table>
+<input type="submit" name="save" value=" <TMPL_VAR lang_submit> ">
+</Form>
+<br><br>
+
+<TMPL_IF rar_files>
+<Form method="POST">
+<input type="hidden" name="op" value="file_edit">
+<input type="hidden" name="file_code" value="<TMPL_VAR file_code>">
+
+<Table class="tbl1" cellpadding=3 cellspacing=1>
+<TR class="hdr"><TD colspan=2>RAR archive management</TD></TR>
+
+<TMPL_IF rar_password>
+<tr><td colspan=2 align=center>
+<b>File is password protected.</b><br>
+Current password:<input type="text" name="rar_pass" size=12><br>
+<input type="submit" name="rar_pass_remove" value="Remove password from archive">
+</td></tr>
+</TMPL_IF>
+
+<TMPL_LOOP rar_files>
+<tr><td><input type="checkbox" name="fname" value="<TMPL_VAR fname>"></td><td><TMPL_VAR fname2></td></tr>
+</TMPL_LOOP>
+<tr><td colspan=2 align=center><input type="submit" name="rar_files_delete" value="Delete selected files from archive"></td></tr>
+<tr><td colspan=2 align=center><input type="submit" name="rar_files_extract" value="Extract selected files from archive"></td></tr>
+</Table>
+</Form>
+</TMPL_IF>

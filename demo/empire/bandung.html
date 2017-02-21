@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>EMPIRE CLUB</title>
+		<link rel="shortcut icon" href="../favicon.ico">
+		<meta name="description" content="Empire Car Club">
+        <meta name="keywords" content="empire, car, club, car club, empire club, indonesia" />
+		<meta name="viewport" content="width=800, user-scalable=no">
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+
+	<body>
+
+		<div class="meny">
+			<h2>[E]Menu</h2>
+			<center>
+			<ul>
+				<li><a href="index.html">[E]Home</a></li>
+				<li><a href="bandung.html">[E]Bandung</a></li>
+				<li><a href="#">[E]Semarang</a></li>
+				<li><a href="photo.html">[E]Photos</a></li>
+				<li><a href="#">[E]vent</a></li>
+			</ul>
+			</center>
+		</div>
+
+		<div class="meny-arrow"></div>
+
+		<div class="contents">
+			<article>
+				
+			</article>
+
+			<div class="sharing">
+				<a href="http://twitter.com/share" class="twitter-share-button" data-text="EMPIRE Club Website by @Ray_R9" data-url="http://www.rayrinaldy.com" data-count="small" data-related="ray_r9"></a>
+				<iframe id="facebook-button" src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Flab.hakim.se%2Fmeny%2F&layout=button_count&show_faces=false&width=83&action=like&font=arial&colorscheme=light&height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:85px; height:24px; position: relative; top: 4px;" allowTransparency="true"></iframe>
+			</div>
+		</div>
+
+		<script src="js/meny.min.js"></script>
+		<script>
+			// Create an instance of Meny
+			var meny = Meny.create({
+				// The element that will be animated in from off screen
+				menuElement: document.querySelector( '.meny' ),
+
+				// The contents that gets pushed aside while Meny is active
+				contentsElement: document.querySelector( '.contents' ),
+
+				// [optional] The alignment of the menu (top/right/bottom/left)
+				position: Meny.getQuery().p || 'bottom',
+
+				// [optional] The height of the menu (when using top/bottom position)
+				height: 200,
+
+				// [optional] The width of the menu (when using left/right position)
+				width: 260,
+
+				// [optional] Distance from mouse (in pixels) when menu should open
+				threshold: 40,
+
+				// [optional] Use mouse movement to automatically open/close
+				mouse: true,
+
+				// [optional] Use touch swipe events to open/close
+				touch: true
+			});
+
+			// API Methods:
+			// meny.open();
+			// meny.close();
+			// meny.isOpen();
+
+			// Events:
+			// meny.addEventListener( 'open', function(){ console.log( 'open' ); } );
+			// meny.addEventListener( 'close', function(){ console.log( 'close' ); } );
+
+			// Embed an iframe if a URL is passed in
+			if( Meny.getQuery().u && Meny.getQuery().u.match( /^http/gi ) ) {
+				var contents = document.querySelector( '.contents' );
+				contents.style.padding = '0px';
+				contents.innerHTML = '<div class="cover"></div><iframe src="'+ Meny.getQuery().u +'" style="width: 100%; height: 100%; border: 0; position: absolute;"></iframe>';
+			}
+		</script>
+
+		<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+	</body>
+</html>

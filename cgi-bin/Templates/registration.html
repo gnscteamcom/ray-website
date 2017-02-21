@@ -1,0 +1,56 @@
+<Center>
+
+<br><br>
+<div class="rrd" style="width:360px;"><b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b><div class="boxcontent">
+
+<h3 style="margin:0;"><TMPL_VAR lang_user_registration></h3>
+
+<Form method="POST" onSubmit="return CheckForm(this)">
+<input type="hidden" name="op" value="register_save">
+<input type="hidden" name="rand" value="<TMPL_VAR rand>">
+<Table>
+<TR><TD align=right><b><TMPL_VAR lang_username></b></TD><TD><input type="text" name="usr_login" value="<TMPL_VAR usr_login>"></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_email></b></TD><TD><input type="text" name="usr_email" value="<TMPL_VAR usr_email>"></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_password></b></TD><TD><input type="password" name="usr_password" value="<TMPL_VAR usr_password>"></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_retype_password></b></TD><TD><input type="password" name="usr_password2" value="<TMPL_VAR usr_password2>"></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_payment_info></b><br><small>(<TMPL_VAR lang_optional>)</small></TD><TD nowrap>
+<input type="text" name="usr_pay_email" value="<TMPL_VAR usr_pay_email>" size=18>
+<select name="usr_pay_type">
+<TMPL_IF paypal_email><option value="paypal"<TMPL_IF pay_type_paypal> selected</TMPL_IF>>PayPal</option></TMPL_IF>
+<TMPL_IF alertpay_email><option value="alertpay"<TMPL_IF pay_type_alertpay> selected</TMPL_IF>>AlertPay</option></TMPL_IF>
+<TMPL_IF webmoney_merchant_id><option value="webmoney"<TMPL_IF pay_type_webmoney> selected</TMPL_IF>>Webmoney</option></TMPL_IF>
+</select>
+</TD></TR>
+<TMPL_IF coupons><TR><TD align=right><b><TMPL_VAR lang_coupon_code></b><br><small>(<TMPL_VAR lang_optional>)</small></td><td><input type="text" name="coupon_code" value="<TMPL_VAR coupon_code>" size=12></td></tr></TMPL_IF>
+<TMPL_IF captcha_on>
+
+<TMPL_IF ihtml>
+<TR><TD colspan=2 align=center><TMPL_VAR ihtml></td></tr>
+<TMPL_ELSE>
+<TR><TD align=right><b><TMPL_VAR lang_code_captcha></b></td><td>
+<table cellspacing=0 cellpadding=1><tr><td><TMPL_IF iurl><img src="<TMPL_VAR iurl>"><TMPL_ELSE><TMPL_VAR itext></TMPL_IF></td><td><input type="text" name="code" class="captcha_code"></td></tr></table>
+</td></tr>
+</TMPL_IF>
+
+</TMPL_IF>
+<TR><TD colspan=2 align=center><TMPL_IF msg><font class="err"><TMPL_VAR msg></font><br><br></TMPL_IF><input type="submit" value=" <TMPL_VAR lang_submit> "></TD></TR>
+</Table>
+</Form>
+</div><b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b></div>
+<br><br>
+</Center>
+
+<Script>
+function  CheckForm(f)
+{
+    var err=Array();
+    if(f.usr_login.value.length<4)err.push("* <TMPL_VAR lang_login_too_short>");
+    if(f.usr_login.value.length>32)err.push("* <TMPL_VAR lang_login_too_long>");
+    if(!f.usr_login.value.match(/^([a-zA-Z0-9_\-])+$/))err.push("* <TMPL_VAR lang_invalid_login>");
+    if(f.usr_password.value.length<4)err.push("* <TMPL_VAR lang_pass_too_short>");
+    if(f.usr_password.value.length>32)err.push("* <TMPL_VAR lang_pass_too_long>");
+    if( !f.usr_email.value.match(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/) )err.push("* <TMPL_VAR lang_invalid_email>");
+    if(f.usr_password.value.length!=f.usr_password2.value.length)err.push("* <TMPL_VAR lang_pass_dont_match>");
+    if(err.length>0){alert( '<TMPL_VAR lang_plz_fix_errors>:\n\n'+err.join('\n') );return false;}
+}
+</Script>

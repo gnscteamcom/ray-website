@@ -1,0 +1,115 @@
+
+/******* CONTAINER *******/
+#container2{
+	width: 800px;
+	margin: 40px auto;
+	text-align: left;
+}
+/******* /CONTAINER *******/
+
+/******* form1 ********/
+#form1{
+	width:470px;;
+	clear:both;
+	border:1px thin #666666;
+}
+/******* /form ********/
+
+#kontak
+{
+	
+	font-family:"Courier New", Courier, monospace;
+	margin:10px 30px 50px auto;
+	background:#D3D3D3;
+	padding:10px;
+	width:300px;
+	height:150px;
+	border: 1px #666666;
+	box-shadow:5px 5px #4f4e4e;
+	text-align: right;
+	clear:both;
+	float:right;
+	position:absolute;
+	top:26%;
+	left:60%;
+}
+
+/******* FORM *******/
+#customForm{
+	padding: 0 10px 10px;
+}
+#customForm label{
+	display: block;
+	color: #797979;
+	font-weight: 700;
+	line-height: 1.4em;
+}
+#customForm input{
+	width: 220px;
+	padding: 6px;
+	color: #949494;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	font-size: 11px;
+	border: 1px solid #cecece;
+}
+#customForm input.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+#customForm textarea{
+	width: 300px;
+	height: 80px;
+	padding: 6px;
+	color: #adaeae;
+	font-family: Arial,  Verdana, Helvetica, sans-serif;
+	font-style: italic;
+	font-size: 12px;
+	border: 1px solid #cecece;
+}
+#customForm textarea.error{
+	background: #f8dbdb;
+	border-color: #e77776;
+}
+#customForm div{
+	margin-bottom: 15px;
+}
+#customForm div span{
+	margin-left: 10px;
+	color: #b1b1b1;
+	font-size: 11px;
+	font-style: italic;
+}
+#customForm div span.error{
+	color: #e46c6e;
+}
+#customForm #send{
+	background: #6f9ff1;
+	color: #fff;
+	font-weight: 700;
+	font-style: normal;
+	border: 0;
+	cursor: pointer;
+}
+#customForm #send:hover{
+	background: #79a7f1;
+}
+#error{
+	margin-bottom: 20px;
+	border: 1px solid #efefef;
+}
+#error ul{
+	list-style: square;
+	padding: 5px;
+	font-size: 11px;
+}
+#error ul li{
+	list-style-position: inside;
+	line-height: 1.6em;
+}
+#error ul li strong{
+	color: #e46c6d;
+}
+#error.valid ul li strong{
+	color: #93d72e;
+}
+/******* /FORM *******/

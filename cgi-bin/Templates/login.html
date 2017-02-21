@@ -1,0 +1,33 @@
+<br><br>
+<div align="center">
+
+<div class="rrd" style="width:360px;"><b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b><div class="boxcontent">
+
+<h3 style="margin:0;"><TMPL_VAR lang_user_login></h3>
+
+<form method="POST" action="<TMPL_VAR site_url>/" name="FL">
+<input type="hidden" name="op" value="login">
+<input type="hidden" name="redirect" value="<TMPL_VAR redirect>">
+<table>
+<tr>
+<td><TMPL_VAR lang_username>:</td><td><input type="text" name="login" value="<TMPL_VAR login>" class="myForm"></td>
+</tr>
+<tr>
+<td><TMPL_VAR lang_password>:</td><td><input type="password" name="password" class="myForm"></td>
+</tr>
+</table>
+<TMPL_IF msg><b class='err'><TMPL_VAR msg></b><br></TMPL_IF>
+<input type="image" src="<TMPL_VAR site_url>/images/login.gif">
+</form>
+
+</div><b class="b4b"></b><b class="b3b"></b><b class="b2b"></b><b class="b1b"></b></div>
+
+</div>
+<br><br>
+<Script>
+<TMPL_IF login>
+document.FL.password.focus();
+<TMPL_ELSE>
+document.FL.login.focus();
+</TMPL_IF>
+</Script>

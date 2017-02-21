@@ -1,0 +1,55 @@
+-------------------------------------------------
+  Code Canopy URL Shortner  V2.0
+-------------------------------------------------
+
+
+	V2.0
+----------------------
+1. Script bug fixes
+2. Complete frontend rebuild using bootstrap.
+3. Upgrade notifications.
+4. Improved stats page.
+5. Home page stats modules.
+6. Admin panel included for free.
+7. New Copy button with js responce.
+8. QR code share.
+9. Stats panel.
+10. Custom individual url google analytics.
+11. Splash page
+12. Google Safe Browsing 
+
+
+	V1.6	
+----------------------
+1. Added installer
+2. Added url counter on homepage.
+
+
+	V1.5	
+----------------------
+1. Settings DB
+– Ad Support (HTML)
+– Socialmedia Share ON/OFF
+– API /Bookmarklet ON/OFF
+– Google Analytics
+
+2. Support for Expansion Pack 1
+3. Minor bug fixes.
+
+	V1.3	
+----------------------
+1. Added custom url api.
+
+	V1.2	
+----------------------
+1. Added bookmarklet
+
+	V1.1	
+----------------------
+- Minor bug fix's. 
+- URL Validation.
+	- Enable/disable in config.
+- Support for https.
+
+
+*Check out the upgrade.txt file to learn how to upgrade.

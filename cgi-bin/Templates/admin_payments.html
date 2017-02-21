@@ -1,0 +1,32 @@
+<H3><TMPL_VAR lang_adm_payments></H3>
+<br>
+<TMPL_IF msg><font class="ok"><TMPL_VAR msg></font><br><br></TMPL_IF>
+<Form method="POST">
+<input type="hidden" name="op" value="admin_payments">
+<Table class="tbl1" cellpadding=2 cellspacing=1>
+<TR class="hdr"><TD colspan=8><TMPL_VAR lang_pending_payments></TD></TR>
+<TR class="hdr">
+    <TD><input type="checkbox" onClick="if(!this.form.pay_id)return false;for(i=0;i<this.form.pay_id.length;i++){this.form.pay_id[i].checked=this.checked;}if(this.form.pay_id.value)this.form.pay_id.checked=this.checked;"></TD>
+    <TD><TMPL_VAR lang_username></TD>
+    <TD><TMPL_VAR lang_amount></TD>
+    <TD>Email</TD>
+    <TD>Payout system</TD>
+    <TD>Payment Info</TD>
+    <TD><TMPL_VAR lang_date></TD>
+</TR>
+<TMPL_LOOP list>
+<TR align=center>
+    <TD><input type="checkbox" name="pay_id" value="<TMPL_VAR id>"></TD>
+    <TD><TMPL_VAR usr_login></TD>
+    <TD>$<TMPL_VAR amount></TD>
+    <TD><TMPL_VAR usr_email></TD>
+    <TD><TMPL_VAR usr_pay_type></TD>
+    <TD><TMPL_VAR usr_pay_email></TD>
+    <TD><TMPL_VAR created></TD>
+</TR>
+</TMPL_LOOP>
+<TR class="hdr"><TD colspan=2></TD><TD>$<TMPL_VAR amount_sum></TD><TD colspan=4></TD></TR>
+<TR class="hdr"><TD colspan=7 style="text-align:left;"><input type="submit" name="mark_paid" value="Mark selected as Paid" class="btn2" style="background-color:#99CC99;"> &nbsp; <input type="submit" name="mark_rejected" value="Mark selected as Rejected" class="btn2" style="background-color:#CC9999;"></TD></TR>
+<TR class="hdr"><TD colspan=7 style="text-align:left;"><input type="submit" name="export_file" value="Export selected as PayPal Mass Payment file" class="btn2"></TD></TR>
+</Table>
+</Form>

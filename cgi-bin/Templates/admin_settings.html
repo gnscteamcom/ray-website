@@ -1,0 +1,621 @@
+<script type="text/javascript">
+document.write('<style type="text/css">.tabber{display:none;}<\/style>');
+var tab_cookie='tab_settings';
+</script>
+
+<Form name="F1" method="POST">
+<input type="hidden" name="op" value="admin_settings">
+
+<input type="submit" name="save" value=" <TMPL_VAR lang_save_settings> ">
+<br><br>
+
+<div style="width:720px;">
+<div class="tabber" id="tabber0">
+
+<div class="tabbertab">
+<h2><TMPL_VAR lang_adm_settings></h2>
+<Table class="tbl1" cellpadding=3 cellspacing=1 width=600 align=center>
+<TR><TD align=right><b><TMPL_VAR lang_license_id></b></TD><TD><input type="text" name="license_key" value="<TMPL_VAR license_key>" size=48></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_site_name></b></TD><TD><input type="text" name="site_name" value="<TMPL_VAR site_name>" size=32></TD></TR>
+<TR valign=top><TD align=right><b><TMPL_VAR lang_captcha_mode></b></TD><TD>
+<input type="radio" name="captcha_mode" value="1" id="c1" onClick="$$('rc_div').style.display='none';"<TMPL_VAR captcha_1>><label for="c1"><TMPL_VAR lang_captcha_image></label> &nbsp; 
+<input type="radio" name="captcha_mode" value="2" id="c2" onClick="$$('rc_div').style.display='none';"<TMPL_VAR captcha_2>><label for="c2"><TMPL_VAR lang_captcha_text></label> &nbsp; 
+<input type="radio" name="captcha_mode" value="3" id="c3" onClick="$$('rc_div').style.display='block';"<TMPL_VAR captcha_3>><label for="c3">reCaptcha</label>
+<div id="rc_div"<TMPL_UNLESS captcha_3> style="display:none"</TMPL_UNLESS>>
+reCaptcha public Key: <input type="text" name="recaptcha_pub_key" value="<TMPL_VAR recaptcha_pub_key>" size=36><br>
+reCaptcha private Key: <input type="text" name="recaptcha_pri_key" value="<TMPL_VAR recaptcha_pri_key>" size=36>
+</div>
+</TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_items_per_page></b></TD><TD><input type="text" name="items_per_page" value="<TMPL_VAR items_per_page>" size=2></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_email_from>:</b></TD><TD><input type="text" name="email_from" value="<TMPL_VAR email_from>" size=32></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_contact_email></b></TD><TD><input type="text" name="contact_email" value="<TMPL_VAR contact_email>" size=32></TD></TR>
+<TR valign=top><TD align=right><b><TMPL_VAR lang_banned_ips></b><br>(<TMPL_VAR lang_one_ip_per_row>)<br><TMPL_VAR lang_use_wildcard></TD><TD><Textarea name="ip_not_allowed" cols=16 rows=3><TMPL_VAR ip_not_allowed></Textarea></TD></TR>
+<TR><TD align=right><b>Show last news in header</b></TD><TD><input type="text" name="show_last_news_days" value="<TMPL_VAR show_last_news_days>" size=2 maxlength=3> days after addition</TD></TR>
+<TR valign=top><TD align=right><b>External Links</b><br>(<TMPL_VAR lang_one_host_per_row>)</TD><TD><Textarea name="external_links" cols=24 rows=3 style="width:250px;font:11px Tahoma;float:left;"><TMPL_VAR external_links></Textarea><small>Format:<br>http://site.com|Site name</small></TD></TR>
+<TR><TD align=right><b>Show server stats on main page</b></TD><TD><input type="checkbox" name="show_server_stats" value="1" id="sss"<TMPL_IF show_server_stats> checked</TMPL_IF>><label for="sss"><TMPL_VAR lang_enabled></label></TD></TR>
+<TR class="hdr"><TD colspan=2>User Registration</TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_email_confirm></b></TD><TD><input type="checkbox" name="registration_confirm_email" value="1" id="emd"<TMPL_IF registration_confirm_email> checked</TMPL_IF>><label for="emd"><TMPL_VAR lang_enabled></label></TD></TR>
+<TR valign=top><TD align=right><b><TMPL_VAR lang_banned_mailhosts></b><br>(<TMPL_VAR lang_one_host_per_row>)</TD><TD><Textarea name="mailhosts_not_allowed" cols=24 rows=3><TMPL_VAR mailhosts_not_allowed></Textarea></TD></TR>
+<TR>
+    <TD align=right><b><TMPL_VAR lang_coupons></b></TD>
+    <TD><textarea name="coupons" cols=16 rows=3 style="float:left"><TMPL_VAR coupons></textarea>
+        Usage: <b>CODE=DAYS</b><br><br>
+        One coupon per row
+    </TD>
+</TR>
+</Table>
+
+</div>
+
+
+<div class="tabbertab">
+
+<h2>Files</h2>
+<Table class="tbl1" cellpadding=3 cellspacing=1 width=640 align=center>
+<TR><TD align=right><b><TMPL_VAR lang_file_descr_sett></b></TD><TD><input type="checkbox" name="enable_file_descr" value="1" id="efd"<TMPL_IF enable_file_descr> checked</TMPL_IF>><label for="efd"><TMPL_VAR lang_enabled></label></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_sanitize_filename></b></TD><TD><input type="checkbox" name="sanitize_filename" value="1" id="efs"<TMPL_IF sanitize_filename> checked</TMPL_IF>><label for="efs"><TMPL_VAR lang_enabled></label> <small>(replace all letters except a-z0-9-. with underline)</small></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_ext_allowed></b></TD><TD><input type="text" name="ext_allowed" value="<TMPL_VAR ext_allowed>" size=24> <TMPL_VAR lang_delimited_by></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_ext_not_allowed></b></TD><TD><input type="text" name="ext_not_allowed" value="<TMPL_VAR ext_not_allowed>" size=24> <TMPL_VAR lang_delimited_by></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_down_links_format></b></TD><TD>
+http://www.site.com/<select name="link_format">
+<option value="0"<TMPL_VAR link_format0>>xxxxxxxxxxxx/file.zip.html</option>
+<option value="1"<TMPL_VAR link_format1>>xxxxxxxxxxxx/file.zip.htm</option>
+<option value="2"<TMPL_VAR link_format2>>xxxxxxxxxxxx/file.zip</option>
+<option value="3"<TMPL_VAR link_format3>>xxxxxxxxxxxx.html</option>
+<option value="4"<TMPL_VAR link_format4>>xxxxxxxxxxxx.htm</option>
+<option value="5"<TMPL_VAR link_format5>>xxxxxxxxxxxx</option>
+</select>
+</TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_add_fname_postfix></b></TD><TD><input type="text" name="add_filename_postfix" value="<TMPL_VAR add_filename_postfix>" size=16></TD></TR>
+<TR valign=top><TD align=right><b><TMPL_VAR lang_banned_filenames></b><br>(<TMPL_VAR lang_one_word_per_row>)</TD><TD><Textarea name="fnames_not_allowed" cols=16 rows=4 style="float:left;"><TMPL_VAR fnames_not_allowed></Textarea><small>Will be replaced with underscore</small></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_file_cmt_sett></b></TD><TD><input type="checkbox" name="enable_file_comments" value="1" id="efc"<TMPL_IF enable_file_comments> checked</TMPL_IF>><label for="efc"><TMPL_VAR lang_enabled></label></TD></TR>
+<TR valign=top><TD align=right><b>Comments banned words</b><br>(<TMPL_VAR lang_one_word_per_row>)</TD><TD><Textarea name="bad_comment_words" cols=16 rows=4><TMPL_VAR bad_comment_words></Textarea></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_expire_temp_links></b></TD><TD><input type="text" name="symlink_expire" value="<TMPL_VAR symlink_expire>" size=2> <TMPL_VAR lang_hours_after_create> <small>(<TMPL_VAR lang_add_to_cron_jobs>)</small></TD></TR>
+
+<TR><TD align=right><b>Clenup IP2Files records older</b></TD><TD><input type="text" name="clean_ip2files_days" value="<TMPL_VAR clean_ip2files_days>" size=3> days <small>(0 to disable)</small></TD></TR>
+
+<TR><TD align=right><b>Allow download from</b></TD><TD>
+<input type="radio" name="link_ip_logic" value="exact" id="lil1"<TMPL_VAR lil_exact>> <label for="lil1">Exact downloader IP</label> &nbsp; 
+<input type="radio" name="link_ip_logic" value="first3" id="lil2"<TMPL_VAR lil_first3>> <label for="lil2">111.222.333.***</label> &nbsp; 
+<input type="radio" name="link_ip_logic" value="first2" id="lil3"<TMPL_VAR lil_first2>> <label for="lil3">111.222.***.***</label> &nbsp; 
+<input type="radio" name="link_ip_logic" value="all" id="lil4"<TMPL_VAR lil_all>> <label for="lil4">All IPs</label>
+</TD></TR>
+<TR><TD align=right><b>Anti-dupe system</b></TD><TD><input type="checkbox" name="anti_dupe_system" value="1" id="ead"<TMPL_IF anti_dupe_system> checked</TMPL_IF>><label for="ead"><TMPL_VAR lang_enabled></label> <small>(Keep only one copy of same files to save diskspace)</small></TD></TR>
+</Table>
+
+</div>
+
+
+<div class="tabbertab">
+
+<h2>Mods</h2>
+<Table class="tbl1" cellpadding=3 cellspacing=1 width=600 align=center>
+<TR valign=top><TD align=right><b><TMPL_VAR lang_predownload_page></b></TD><TD><input type="checkbox" name="pre_download_page" value="1" id="efp"<TMPL_IF pre_download_page> checked</TMPL_IF>><label for="efp"><TMPL_VAR lang_predownload_descr></label></TD></TR>
+<TR valign=top><TD align=right><b><TMPL_VAR lang_pub_catalogue></b></TD><TD><input type="checkbox" name="enable_catalogue" value="1" id="efcc"<TMPL_IF enable_catalogue> checked</TMPL_IF>><label for="efcc"><TMPL_VAR lang_enabled></label></TD></TR>
+<TR><TD align=right><b>Generate Google Sitemap</b></TD><TD><input type="checkbox" name="ping_google_sitemaps" value="1" id="gsm"<TMPL_IF ping_google_sitemaps> checked</TMPL_IF>><label for="gsm"><TMPL_VAR lang_enabled></label></TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_images_mod></b></TD><TD>
+    <input type="checkbox" name="image_mod" value="1" id="ifs"<TMPL_IF image_mod> checked</TMPL_IF>><label for="ifs"><TMPL_VAR lang_enabled></label> &nbsp; 
+    <input type="checkbox" name="image_mod_no_download" value="1" id="ifs2"<TMPL_IF image_mod_no_download> checked</TMPL_IF>><label for="ifs2">No download button</label>
+</TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_mp3_mod></b></TD><TD>
+    <input type="checkbox" name="mp3_mod" value="1" id="mfs"<TMPL_IF mp3_mod> checked</TMPL_IF>><label for="mfs"><TMPL_VAR lang_enabled></label> &nbsp; 
+    <input type="checkbox" name="mp3_mod_no_download" value="1" id="mfs2"<TMPL_IF mp3_mod_no_download> checked</TMPL_IF>><label for="mfs2">No download button</label> &nbsp; 
+    <input type="checkbox" name="mp3_mod_autoplay" value="1" id="mfs3"<TMPL_IF mp3_mod_autoplay> checked</TMPL_IF>><label for="mfs3">Autoplay</label>
+</TD></TR>
+<TR><TD align=right><b><TMPL_VAR lang_deurl_mod></b></TD><TD>
+DeURL site: <input type="text" name="deurl_site" value="<TMPL_VAR deurl_site>" size=32>  [<a href="http://www.sibsoft.net/xfs-mod-deurl.html" onClick="return OpenWin(this.href,320,240)" class="url2">?</a>]<br>
+API key: <input type="text" name="deurl_api_key" value="<TMPL_VAR deurl_api_key>" size=16><br>
+</TD></TR>
+</Table>
+
+<br>
+
+<Table class="tbl1" cellpadding=3 cellspacing=1 width=600 align=center>
+<TR><TD align=right width="5%" nowrap><b><TMPL_VAR lang_twitter_mod></b></TD><TD><input type="checkbox" name="m_w" value="1" id="mdw"<TMPL_IF m_w> checked</TMPL_IF><TMPL_UNLESS enp_w> disabled</TMPL_UNLESS>><label for="mdw"><TMPL_VAR lang_enabled></label><TMPL_UNLESS enp_w> <small>(not available with your license)</small></TMPL_UNLESS> [<a href="http://www.sibsoft.net/xfs-mod-w.html" onClick="return OpenWin(this.href,320,240)" class="url2">?</a>]</TD></TR>
+<TR><TD align=right width="5%" nowrap><b>Embedded upload form</b></TD><TD><input type="checkbox" name="m_u" value="1" id="mdu"<TMPL_IF m_u> checked</TMPL_IF><TMPL_UNLESS enp_u> disabled</TMPL_UNLESS>><label for="mdu"><TMPL_VAR lang_enabled></label><TMPL_UNLESS enp_u> <small>(not available with your license)</small></TMPL_UNLESS> [<a href="http://www.sibsoft.net/xfs-mod-u.html" onClick="return OpenWin(this.href,320,240)" class="url2">?</a>]
+<TMPL_IF enp_u><br><b>Embed code:</b> (you can tune text and background colors)<br><textarea rows=3 style="width:99%;font:12px Arial;"><iframe src="<TMPL_VAR site_url>/box?xbg=FFFFFF&xtxt=101010" width=350 height=55 frameborder=0 scrolling="no" allowTransparency="true"></iframe></textarea></TMPL_IF>
+</TD></TR>
+<TR><TD align=right width="5%" nowrap><b>RAR archives mod</b></TD><TD><input type="checkbox" name="m_b" value="1" id="mdb"<TMPL_IF m_b> checked</TMPL_IF><TMPL_UNLESS enp_b> disabled</TMPL_UNLESS>><label for="mdb"><TMPL_VAR lang_enabled></label><TMPL_UNLESS enp_b> <small>(not available with your license)</small></TMPL_UNLESS> [<a href="http://www.sibsoft.net/xfs-mod-b.html" onClick="return OpenWin(this.href,320,240)" class="url2">?</a>]</TD></TR>
+<TR><TD align=right width="5%" nowrap><b>NGINX mod</b></TD><TD><input type="checkbox" name="m_n" value="1" id="mdn"<TMPL_IF m_n> checked</TMPL_IF>><label for="mdn"><TMPL_VAR lang_enabled></label> [<a href="http://www.sibsoft.net/xfs-mod-n.html" onClick="return OpenWin(this.href,320,240)" class="url2">?</a>]</TD></TR>
+</Table>
+
+<br>
+
+<div style="text-align:left">
+<div class="tabber" id="tabber1">
+
+<div class="tabbertab" id="mod_image">
+<h2><TMPL_VAR lang_dir_img_mod></h2>
+<Table class="tbl1" cellpadding=3 cellspacing=1 width="100%">
+<TR><TD align=right width="5%" nowrap><b><TMPL_VAR lang_dir_img_mod></b></TD><TD><input type="checkbox" name="m_i" value="1" id="mdi"<TMPL_IF m_i> checked</TMPL_IF><TMPL_UNLESS enp_i> disabled</TMPL_UNLESS>><label for="mdi"><TMPL_VAR lang_enabled></label><TMPL_UNLESS enp_i> <small>(not available with your license)</small></TMPL_UNLESS> [<a href="http://www.sibsoft.net/xfs-mod-i.html" onClick="return OpenWin(this.href,320,240)" class="url2">?</a>]</TD></TR>
+<TR><TD align=right><b>Hotlink original image</b></TD><TD><input type="checkbox" name="m_i_hotlink_orig" value="1" id="mdih"<TMPL_IF m_i_hotlink_orig> checked</TMPL_IF>><label for="mdih"><TMPL_VAR lang_enabled></label></TD></TR>
+<TR><TD align=right width="5%" nowrap><b>Thumbnail size</b></TD><TD><input type="text" name="m_i_width" value="<TMPL_VAR m_i_width>" size=3>x<input type="text" name="m_i_height" value="<TMPL_VAR m_i_height>" size=3> pixels</TD></TR>
+
+<TR><TD align=right width="5%" nowrap><b>Thumbnail method</b></TD><TD>
+<input type="radio" name="m_i_resize" value="0" id="mir0"<TMPL_UNLESS m_i_resize> checked</TMPL_UNLESS>><label for="mir0">Standard</label> &nbsp; 
+<input type="radio" name="m_i_resize" value="1" id="mir1"<TMPL_IF m_i_resize> checked</TMPL_IF>><label for="mir1">Cropped</label>
+</TD></TR>
+
+<TR><TD align=right width="5%" nowrap><b>Watermark image file</b></TD><TD><input type="text" name="m_i_wm_image" value="<TMPL_VAR m_i_wm_image>" size=18>
+<small>For transparancy use transparent images in PNG24 format.<br>You should have this image file on each fileserver in cgi-bin folder.</small>
+</TD></TR>
+<TR><TD align=right width="5%" nowrap><b>Watermark position</b></TD><TD>
+<table cellpadding=0 cellspacing=0 align=left>
+<tr>
+    <td><input type="radio" name="m_i_wm_position" value="nw"<TMPL_IF m_i_wm_position_nw> checked</TMPL_IF>></td>
+    <td><input type="radio" name="m_i_wm_position" value="n"<TMPL_IF m_i_wm_position_n> checked</TMPL_IF>></td>
+    <td><input type="radio" name="m_i_wm_position" value="ne"<TMPL_IF m_i_wm_position_ne> checked</TMPL_IF>></td>
+</tr>
+<tr>
+    <td><input type="radio" name="m_i_wm_position" value="w"<TMPL_IF m_i_wm_position_w> checked</TMPL_IF>></td>
+    <td><input type="radio" name="m_i_wm_position" value="c"<TMPL_IF m_i_wm_position_c> checked</TMPL_IF>></td>
+    <td><input type="radio" name="m_i_wm_position" value="e"<TMPL_IF m_i_wm_position_e> checked</TMPL_IF>></td>
+</tr>
+<tr>
+    <td><input type="radio" name="m_i_wm_position" value="sw"<TMPL_IF m_i_wm_position_sw> checked</TMPL_IF>></td>
+    <td><input type="radio" name="m_i_wm_position" value="s"<TMPL_IF m_i_wm_position_s> checked</TMPL_IF>></td>
+    <td><input type="radio" name="m_i_wm_position" value="se"<TMPL_IF m_i_wm_position_se> checked</TMPL_IF>></td>
+</tr>
+</table>
+</TD></TR>
+<TR><TD align=right width="5%" nowrap><b>Watermark padding</b></TD><TD><input type="text" name="m_i_wm_padding" value="<TMPL_VAR m_i_wm_padding>" size=3> pixels</TD></TR>
+</Table>
+</div>
+
+<div class="tabbertab" id="mod_video">
+<h2><TMPL_VAR lang_video_mod></h2>
+<Table class="tbl1" cellpadding=3 cellspacing=1 width="100%">
+<TR>
+    <TD align=right><b><TMPL_VAR lang_video_mod></b></TD><TD>
+    <input type="checkbox" name="m_v" value="1" id="mdv"<TMPL_IF m_v> checked</TMPL_IF><TMPL_UNLESS enp_v> disabled</TMPL_UNLESS>><label for="mdv"><TMPL_VAR lang_enabled></label><TMPL_UNLESS enp_v> <small>(not available with your license)</small></TMPL_UNLESS> [<a href="http://www.sibsoft.net/xfs-mod-v.html" onClick="return OpenWin(this.href,360,240)" class="url2">?</a>] &nbsp; 
+    <input type="checkbox" name="video_mod_no_download" value="1" id="mdv2"<TMPL_IF video_mod_no_download> checked</TMPL_IF>><label for="mdv2">No download button</label>
+    </TD>
+</TR>
+<TR>
+    <TD align=right><b>Show video player on page</b></TD>
+    <TD>
+        <input type="radio" name="m_v_page" value="0" id="mv0"<TMPL_IF m_v_page_0> checked</TMPL_IF>><label for="mv0">Download1</label> &nbsp; 
+        <input type="radio" name="m_v_page" value="1" id="mv1"<TMPL_IF m_v_page_1> checked</TMPL_IF>><label for="mv1">Download2</label> &nbsp; 
+        <input type="radio" name="m_v_page" value="2" id="mv2"<TMPL_IF m_v_page_2> checked</TMPL_IF>><label for="mv2">Don't show</label>
+    </TD>
+</TR>
+<TR>
+    <TD align=right><b>Fixed player size</b></TD>
+    <TD><input type="text" name="m_v_width" value="<TMPL_VAR m_v_width>" size=3>x<input type="text" name="m_v_height" value="<TMPL_VAR m_v_height>" size=3> pixels (0 to use video size)</TD>
+</TR>
+<TMPL_IF enp_v>
+<TR class="hdr">
+    <TD colspan=2>Ads overlay mod</TD>
+</TR>
+<TR>
+    <TD align=right><b>Ads overlay mod</b></TD>
+    <TD><input type="checkbox" name="m_a" value="1" id="mda"<TMPL_IF m_a> checked</TMPL_IF><TMPL_UNLESS enp_a> disabled</TMPL_UNLESS>><label for="mda"><TMPL_VAR lang_enabled></label><TMPL_UNLESS enp_a> <small>(not available with your license)</small></TMPL_UNLESS> [<a href="http://www.sibsoft.net/xfs-mod-a.html" onClick="return OpenWin(this.href,360,240)" class="url2">?</a>]</TD>
+</TR>
+<TR class="hdr">
+    <TD colspan=2>Heywatch.com video encoding</TD>
+</TR>
+<TR>
+    <TD align=right><b>Heywatch mod</b></TD>
+    <TD><input type="checkbox" name="m_h" value="1" id="mdh"<TMPL_IF m_h> checked</TMPL_IF><TMPL_UNLESS enp_h> disabled</TMPL_UNLESS>><label for="mdh"><TMPL_VAR lang_enabled></label><TMPL_UNLESS enp_h> <small>(not available with your license)</small></TMPL_UNLESS> [<a href="http://www.sibsoft.net/xfs-mod-h.html" onClick="return OpenWin(this.href,360,240)" class="url2">?</a>]</TD>
+</TR>
+<TR>
+    <TD align=right><b>Heywatch account</b></TD>
+    <TD>Login: <input type="text" name="m_h_login" value="<TMPL_VAR m_h_login>" size=16<TMPL_UNLESS enp_h> disabled</TMPL_UNLESS>> &nbsp; 
+        Password: <input type="text" name="m_h_password" value="<TMPL_VAR m_h_password>" size=16<TMPL_UNLESS enp_h> disabled</TMPL_UNLESS>>
+    </TD>
+</TR>
+
+<TR class="hdr">
+    <TD colspan=2>MP4 ffmpeg video encoding</TD>
+</TR>
+<TR>
+    <TD align=right><b>MP4 encoding mod</b></TD>
+    <TD><input type="checkbox" name="m_e" value="1" id="mde"<TMPL_IF m_e> checked</TMPL_IF><TMPL_UNLESS enp_e> disabled</TMPL_UNLESS>><label for="mde"><TMPL_VAR lang_enabled></label><TMPL_UNLESS enp_e> <small>(not available with your license)</small></TMPL_UNLESS> [<a href="http://www.sibsoft.net/xfs-mod-e.html" onClick="return OpenWin(this.href,360,240)" class="url2">?</a>]</TD>
+</TR>
+<TR>
+    <TD align=right><b>Video width</b></TD>
+    <TD><input type="text" name="m_e_vid_width" value="<TMPL_VAR m_e_vid_width>" size=4<TMPL_UNLESS enp_e> disabled</TMPL_UNLESS>> pixels</TD>
+</TR>
+<TR>
+    <TD align=right><b>Video quality</b></TD>
+    <TD><input type="text" name="m_e_vid_quality" value="<TMPL_VAR m_e_vid_quality>" size=2<TMPL_UNLESS enp_e> disabled</TMPL_UNLESS>> CRF value. 24 is recommended. Lower values gives better quality.</TD>
+</TR>
+<TR>
+    <TD align=right><b>Audio bitrate</b></TD>
+    <TD><input type="text" name="m_e_audio_bitrate" value="<TMPL_VAR m_e_audio_bitrate>" size=3<TMPL_UNLESS enp_e> disabled</TMPL_UNLESS>> kbps</TD>
+</TR>
+</TR>
+</TMPL_IF>
+</Table>
+</div>
+
+<div class="tabbertab" id="mod_leech">
+<h2><TMPL_VAR lang_url_leech_mod></h2>
+<Table class="tbl1" cellpadding=3 cellspacing=1 width="100%">
+<TR><TD align=right><b><TMPL_VAR lang_url_leech_mod></b></TD><TD><input type="checkbox" name="m_r" value="1" id="mdr"<TMPL_IF m_r> checked</TMPL_IF><TMPL_UNLESS enp_r> disabled</TMPL_UNLESS>><label for="mdr"><TMPL_VAR lang_enabled></label><TMPL_UNLESS enp_r> <small>(not available with your license)</small></TMPL_UNLESS> [<a href="http://www.sibsoft.net/xfs-mod-r.html" onClick="return OpenWin(this.href,360,240)" class="url2">?</a>]</TD></TR>
+<TR><TD colspan=2 align=center><b>Specify Premium accounts for required sites below</b><br><b>Important:</b> Enable Direct Downloads in all your Premium sites accounts if available</TD></TR>
+<TR valign=top><TD align=right><b>Rapidshare.com</b></TD><TD><Textarea name="rs_logins" cols=36 rows=2 style="float:left;"><TMPL_VAR rs_logins></Textarea><small><b>Sample:</b><br>login1:password1<br>login2:password2</small></TD></TR>
+<TR valign=top><TD align=right><b>Megaupload.com</b></TD><TD><Textarea name="mu_logins" cols=36 rows=2><TMPL_VAR mu_logins></Textarea></TD></TR>
+<TR valign=top><TD align=right><b>Netload.in</b><br></TD><TD><Textarea name="nl_logins" cols=36 rows=2><TMPL_VAR nl_logins></Textarea></TD></TR>
+<TR valign=top><TD align=right><b>Hotfile.com</b><br></TD><TD><Textarea name="hf_logins" cols=36 rows=2><TMPL_VAR hf_logins></Textarea></TD></TR>
+
+<TR valign=top><TD align=right><b>Mediafire.com</b><br></TD><TD><Textarea name="mf_logins" cols=36 rows=2><TMPL_VAR mf_logins></Textarea></TD></TR>
+<TR valign=top><TD align=right><b>4shared.com</b><br></TD><TD><Textarea name="fs_logins" cols=36 rows=2><TMPL_VAR fs_logins></Textarea></TD></TR>
+<TR valign=top><TD align=right><b>Depositfiles.com</b><br></TD><TD><Textarea name="df_logins" cols=36 rows=2><TMPL_VAR df_logins></Textarea></TD></TR>
+<TR valign=top><TD align=right><b>Uploading.com</b><br></TD><TD><Textarea name="ug_logins" cols=36 rows=2><TMPL_VAR ug_logins></Textarea></TD></TR>
+<TR valign=top><TD align=right><b>Filefactory.com</b><br></TD><TD><Textarea name="ff_logins" cols=36 rows=2><TMPL_VAR ff_logins></Textarea></TD></TR>
+<TR valign=top><TD align=right><b>Easy-share.com</b><br></TD><TD><Textarea name="es_logins" cols=36 rows=2><TMPL_VAR es_logins></Textarea></TD></TR>
+<TR valign=top><TD align=right><b>Filesonic.com</b><br></TD><TD><Textarea name="sm_logins" cols=36 rows=2><TMPL_VAR sm_logins></Textarea></TD></TR>
+<TR valign=top><TD align=right><b>Fileserve.com</b><br></TD><TD><Textarea name="fe_logins" cols=36 rows=2><TMPL_VAR fe_logins></Textarea></TD></TR>
+</Table>
+</div>
+
+<div class="tabbertab">
+<h2><TMPL_VAR lang_reports_mod></h2>
+<Table class="tbl1" cellpadding=3 cellspacing=1 width="100%">
+<TR><TD align=right><b><TMPL_VAR lang_reports_mod></b></TD><TD><input type="checkbox" name="m_s" value="1" id="mds"<TMPL_IF m_s> checked</TMPL_IF><TMPL_UNLESS enp_s> disabled</TMPL_UNLESS>><label for="mds"><TMPL_VAR lang_enabled></label><TMPL_UNLESS enp_s> <small>(not available with your license)</small></TMPL_UNLESS> [<a href="http://www.sibsoft.net/xfs-mod-s.html" onClick="return OpenWin(this.href,320,240)" class="url2">?</a>]</TD></TR>
+<TR><TD align=right width="5%" nowrap><b>Enable reports for regular users</b></TD><TD><input type="checkbox" name="m_s_reg" value="1" id="mds2"<TMPL_IF m_s_reg> checked</TMPL_IF>><label for="mds2"><TMPL_VAR lang_enabled></label></TD></TR>
+</Table>
+</div>
+
+<div class="tabbertab">
+<h2>Moderator mod</h2>
+<Table class="tbl1" cellpadding=3 cellspacing=1 width="100%">
+<TR><TD align=right><b>Moderator mod</b></TD><TD><input type="checkbox" name="m_d" value="1" id="mdd"<TMPL_IF m_d> checked</TMPL_IF><TMPL_UNLESS enp_d> disabled</TMPL_UNLESS>><label for="mdd"><TMPL_VAR lang_enabled></label><TMPL_UNLESS enp_d> <small>(not available with your license)</small></TMPL_UNLESS> [<a href="http://www.sibsoft.net/xfs-mod-d.html" onClick="return OpenWin(this.href,320,240)" class="url2">?</a>]</TD></TR>
+<TR><TD align=right><b>File moderation</b></TD><TD><input type="checkbox" name="m_d_f" value="1" id="mdd1"<TMPL_IF m_d_f> checked</TMPL_IF><TMPL_UNLESS enp_d> disabled</TMPL_UNLESS>><label for="mdd1"><TMPL_VAR lang_enabled></label></TD></TR>
+<TR><TD align=right><b>Abuse management</b></TD><TD><input type="checkbox" name="m_d_a" value="1" id="mdd2"<TMPL_IF m_d_a> checked</TMPL_IF><TMPL_UNLESS enp_d> disabled</TMPL_UNLESS>><label for="mdd2"><TMPL_VAR lang_enabled></label></TD></TR>
+<TR><TD align=right width="5%" nowrap><b>Comments moderation</b></TD><TD><input type="checkbox" name="m_d_c" value="1" id="mdd3"<TMPL_IF m_d_c> checked</TMPL_IF><TMPL_UNLESS enp_d> disabled</TMPL_UNLESS>><label for="mdd3"><TMPL_VAR lang_enabled></label></TD></TR>
+</Table>
+</div>
+
+</div>
+</div>
+<a href="http://sibsoft.net/cgi-bin/client.cgi?id=<TMPL_VAR cliid>" target=_blank>Get more mods</a>
+
+</div>
+
+
+<div class="tabbertab">
+
+<h2><TMPL_VAR lang_users_limits></h2>
+<Table class="tbl1" cellpadding=3 cellspacing=1 width=640 align=center>
+<TR class="hdr">
+    <TD>&nbsp;</TD>
+    <TD><TMPL_VAR lang_anonymous></TD>
+    <TD><TMPL_VAR lang_registered></TD>
+    <TD><TMPL_VAR lang_premium></TD>
+    <TD>&nbsp;</TD>
+</TR>
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_enabled></b></TD>
+    <TD><input type="checkbox" name="enabled_anon" value="1"<TMPL_IF enabled_anon> checked</TMPL_IF> title="Allow anonymous uploads"></TD>
+    <TD><input type="checkbox" name="enabled_reg" value="1"<TMPL_IF enabled_reg> checked</TMPL_IF> title="Allow user registration"></TD>
+    <TD><input type="checkbox" name="enabled_prem" value="1"<TMPL_IF enabled_prem> checked</TMPL_IF> title="Allow premium accounts"></TD>
+    <TD align=left></TD>
+</TR>
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_remote_url_upload></b></TD>
+    <TD><input type="checkbox" name="remote_url_anon" value="1" id="remote_url_anon"<TMPL_IF remote_url_anon> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="remote_url_reg" value="1" id="remote_url_reg"<TMPL_IF remote_url_reg> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="remote_url_prem" value="1" id="remote_url_prem"<TMPL_IF remote_url_prem> checked</TMPL_IF>></TD>
+    <TD align=left></TD>
+</TR>
+<TR align=center>
+    <TD align=right><b>Torrents upload</b></TD>
+    <TD>-</TD>
+    <TD><input type="checkbox" name="torrent_dl_reg" value="1"<TMPL_IF torrent_dl_reg> checked</TMPL_IF><TMPL_UNLESS enp_t> disabled</TMPL_UNLESS>></TD>
+    <TD><input type="checkbox" name="torrent_dl_prem" value="1"<TMPL_IF torrent_dl_prem> checked</TMPL_IF><TMPL_UNLESS enp_t> disabled</TMPL_UNLESS>></TD>
+    <TD align=left><TMPL_UNLESS enp_t> <small>(not available with your license)</small> </TMPL_UNLESS>[<a href="http://www.sibsoft.net/xfs-mod-t.html" onClick="return OpenWin(this.href,320,240)" class="url2">?</a>]</TD>
+</TR>
+<TR align=center>
+    <TD align=right><b>Flash upload</b></TD>
+    <TD><input type="checkbox" name="flash_upload_anon" value="1"<TMPL_IF flash_upload_anon> checked</TMPL_IF><TMPL_UNLESS enp_f> disabled</TMPL_UNLESS>></TD>
+    <TD><input type="checkbox" name="flash_upload_reg" value="1"<TMPL_IF flash_upload_reg> checked</TMPL_IF><TMPL_UNLESS enp_f> disabled</TMPL_UNLESS>></TD>
+    <TD><input type="checkbox" name="flash_upload_prem" value="1"<TMPL_IF flash_upload_prem> checked</TMPL_IF><TMPL_UNLESS enp_f> disabled</TMPL_UNLESS>></TD>
+    <TD align=left><TMPL_UNLESS enp_f> <small>(not available with your license)</small> </TMPL_UNLESS> [<a href="http://www.sibsoft.net/xfs-mod-f.html" onClick="return OpenWin(this.href,320,240)" class="url2">?</a>]</TD>
+</TR>
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_upload_slots></b></TD>
+    <TD><input type="text" name="max_upload_files_anon" value="<TMPL_VAR max_upload_files_anon>" size=2></TD>
+    <TD><input type="text" name="max_upload_files_reg" value="<TMPL_VAR max_upload_files_reg>" size=2></TD>
+    <TD><input type="text" name="max_upload_files_prem" value="<TMPL_VAR max_upload_files_prem>" size=2></TD>
+    <TD align=left></TD>
+</TR>
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_max_file_size></b></TD>
+    <TD><input type="text" name="max_upload_filesize_anon" value="<TMPL_VAR max_upload_filesize_anon>" size=4></TD>
+    <TD><input type="text" name="max_upload_filesize_reg" value="<TMPL_VAR max_upload_filesize_reg>" size=4></TD>
+    <TD><input type="text" name="max_upload_filesize_prem" value="<TMPL_VAR max_upload_filesize_prem>" size=4></TD>
+    <TD align=left>Mbytes <small>(<TMPL_VAR lang_0_unlimited>)</small></TD>
+</TR>
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_max_dl_file_size></b></TD>
+    <TD><input type="input" name="max_download_filesize_anon" value="<TMPL_VAR max_download_filesize_anon>" size=4></TD>
+    <TD><input type="input" name="max_download_filesize_reg" value="<TMPL_VAR max_download_filesize_reg>" size=4></TD>
+    <TD><input type="input" name="max_download_filesize_prem" value="<TMPL_VAR max_download_filesize_prem>" size=4></TD>
+    <TD align=left>Mbytes <small>(<TMPL_VAR lang_0_unlimited>)</small></TD>
+</TR>
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_disk_space_limit></b></TD>
+    <TD>-</TD>
+    <TD><input type="input" name="disk_space_reg" value="<TMPL_VAR disk_space_reg>" size=5></TD>
+    <TD><input type="input" name="disk_space_prem" value="<TMPL_VAR disk_space_prem>" size=5></TD>
+    <TD align=left>Mbytes <small>(<TMPL_VAR lang_0_unlimited>)</small></TD>
+</TR>
+
+<TR align=center>
+    <TD align=right><b>Delete files after</b></TD>
+    <TD><input type="text" name="files_expire_access_anon" value="<TMPL_VAR files_expire_access_anon>" size=3></TD>
+    <TD><input type="text" name="files_expire_access_reg" value="<TMPL_VAR files_expire_access_reg>" size=3></TD>
+    <TD><input type="text" name="files_expire_access_prem" value="<TMPL_VAR files_expire_access_prem>" size=3></TD>
+    <TD align=left>days without downloads<br><small>(0 = keep forever)</small></TD>
+</TR>
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_show_ads></b></TD>
+    <TD><input type="checkbox" name="ads_anon" value="1"<TMPL_IF ads_anon> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="ads_reg" value="1"<TMPL_IF ads_reg> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="ads_prem" value="1"<TMPL_IF ads_prem> checked</TMPL_IF>></TD>
+    <TD align=left><small>&lt;TMPL_IF ads&gt;...&lt;/TMPL_IF&gt;<br> <TMPL_VAR lang_code_in_tmpl></small></TD>
+</TR>
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_downloads_captcha></b></TD>
+    <TD><input type="checkbox" name="captcha_anon" value="1" id="captcha_anon"<TMPL_IF captcha_anon> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="captcha_reg" value="1" id="captcha_reg"<TMPL_IF captcha_reg> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="captcha_prem" value="1" id="captcha_prem"<TMPL_IF captcha_prem> checked</TMPL_IF>></TD>
+    <TD align=left></TD>
+</TR>
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_downloads_count></b></TD>
+    <TD><input type="text" name="download_countdown_anon" value="<TMPL_VAR download_countdown_anon>" size=4></TD>
+    <TD><input type="text" name="download_countdown_reg" value="<TMPL_VAR download_countdown_reg>" size=4></TD>
+    <TD><input type="text" name="download_countdown_prem" value="<TMPL_VAR download_countdown_prem>" size=4></TD>
+    <TD align=left><TMPL_VAR lang_seconds></TD>
+</TR>
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_max_file_downloads></b></TD>
+    <TD><input type="text" name="max_downloads_number_anon" value="<TMPL_VAR max_downloads_number_anon>" size=4></TD>
+    <TD><input type="text" name="max_downloads_number_reg" value="<TMPL_VAR max_downloads_number_reg>" size=4></TD>
+    <TD><input type="text" name="max_downloads_number_prem" value="<TMPL_VAR max_downloads_number_prem>" size=4></TD>
+    <TD align=left>(<TMPL_VAR lang_0_unlimited>)</TD>
+</TR>
+<TR align=center>
+    <TD align=right><b>Next download delay</b></TD>
+    <TD><input type="text" name="add_download_delay_anon" value="<TMPL_VAR add_download_delay_anon>" size=4></TD>
+    <TD><input type="text" name="add_download_delay_reg" value="<TMPL_VAR add_download_delay_reg>" size=4></TD>
+    <TD><input type="text" name="add_download_delay_prem" value="<TMPL_VAR add_download_delay_prem>" size=4></TD>
+    <TD align=left>for each 100MB downloaded, <TMPL_VAR lang_seconds></TD>
+</TR>
+
+<TR align=center>
+    <TD align=right><b>Next download delay</b></TD>
+    <TD><input type="text" name="file_dl_delay_anon" value="<TMPL_VAR file_dl_delay_anon>" size=4></TD>
+    <TD><input type="text" name="file_dl_delay_reg" value="<TMPL_VAR file_dl_delay_reg>" size=4></TD>
+    <TD><input type="text" name="file_dl_delay_prem" value="<TMPL_VAR file_dl_delay_prem>" size=4></TD>
+    <TD align=left> after each download, <TMPL_VAR lang_seconds></TD>
+</TR>
+
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_max_bandw_last> <input type="text" name="bw_limit_days" value="<TMPL_VAR bw_limit_days>" size=1> <TMPL_VAR lang_days></b></TD>
+    <TD><input type="text" name="bw_limit_anon" value="<TMPL_VAR bw_limit_anon>" size=4></TD>
+    <TD><input type="text" name="bw_limit_reg" value="<TMPL_VAR bw_limit_reg>" size=4></TD>
+    <TD><input type="text" name="bw_limit_prem" value="<TMPL_VAR bw_limit_prem>" size=4></TD>
+    <TD align=left><TMPL_VAR lang_mb_per_ip> <small>(<TMPL_VAR lang_0_unlimited>)</small></TD>
+</TR>
+<TMPL_IF enp_r>
+<TR align=center>
+    <TD align=right><b>Max URL Leech Traffic</b></TD>
+    <TD>-</TD>
+    <TD><input type="text" name="max_rs_leech_reg" value="<TMPL_VAR max_rs_leech_reg>" size=4></TD>
+    <TD><input type="text" name="max_rs_leech_prem" value="<TMPL_VAR max_rs_leech_prem>" size=4></TD>
+    <TD align=left>MB per day</TD>
+</TR>
+</TMPL_IF>
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_download_speed></b></TD>
+    <TD><input type="text" name="down_speed_anon" value="<TMPL_VAR down_speed_anon>" size=4></TD>
+    <TD><input type="text" name="down_speed_reg" value="<TMPL_VAR down_speed_reg>" size=4></TD>
+    <TD><input type="text" name="down_speed_prem" value="<TMPL_VAR down_speed_prem>" size=4></TD>
+    <TD align=left><TMPL_VAR lang_kb_sec><br><small>Works only for dl.cgi and Nginx mod</small></TD>
+</TR>
+<TR align=center>
+    <TD align=right><b><TMPL_VAR lang_gen_direct_links></b></TD>
+    <TD><input type="checkbox" name="direct_links_anon" value="1" id="s1"<TMPL_IF direct_links_anon> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="direct_links_reg" value="1" id="s2"<TMPL_IF direct_links_reg> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="direct_links_prem" value="1" id="s3"<TMPL_IF direct_links_prem> checked</TMPL_IF>></TD>
+    <TD align=left><small><TMPL_VAR lang_direct_links_descr></small></TD>
+</TR>
+
+<TMPL_IF enp_t>
+<TR align=center>
+    <TD align=right><b>Torrent upload slots</b></TD>
+    <TD>-</TD>
+    <TD><input type="text" name="torrent_dl_slots_reg" value="<TMPL_VAR torrent_dl_slots_reg>" size=2></TD>
+    <TD><input type="text" name="torrent_dl_slots_prem" value="<TMPL_VAR torrent_dl_slots_prem>" size=2></TD>
+    <TD align=left><small>Number or parallel uploads</small></TD>
+</TR>
+</TMPL_IF>
+<TR align=center>
+    <TD align=right><b>Show mp3 embed code</b></TD>
+    <TD><input type="checkbox" name="mp3_embed_anon" value="1"<TMPL_IF mp3_embed_anon> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="mp3_embed_reg" value="1"<TMPL_IF mp3_embed_reg> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="mp3_embed_prem" value="1"<TMPL_IF mp3_embed_prem> checked</TMPL_IF>></TD>
+    <TD align=left></TD>
+</TR>
+<TMPL_IF m_v>
+<TR align=center>
+    <TD align=right><b>Show video embed code</b></TD>
+    <TD><input type="checkbox" name="video_embed_anon" value="1"<TMPL_IF video_embed_anon> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="video_embed_reg" value="1"<TMPL_IF video_embed_reg> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="video_embed_prem" value="1"<TMPL_IF video_embed_prem> checked</TMPL_IF>></TD>
+    <TD align=left></TD>
+</TR>
+</TMPL_IF>
+<TMPL_IF m_b>
+<TR align=center>
+    <TD align=right><b>RAR archives info / management</b></TD>
+    <TD><input type="checkbox" name="rar_info_anon" value="1"<TMPL_IF rar_info_anon> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="rar_info_reg" value="1"<TMPL_IF rar_info_reg> checked</TMPL_IF>></TD>
+    <TD><input type="checkbox" name="rar_info_prem" value="1"<TMPL_IF rar_info_prem> checked</TMPL_IF>></TD>
+    <TD align=left></TD>
+</TR>
+</TMPL_IF>
+</Table>
+
+</div>
+
+<div class="tabbertab">
+
+<h2><TMPL_VAR lang_payment_settings></h2>
+<Table class="tbl1" cellpadding=3 cellspacing=1 width=680 align=center>
+<TR>
+    <TD align=right><b><TMPL_VAR lang_product_name></b></TD>
+    <TD><input type="text" name="item_name" value="<TMPL_VAR item_name>" size=36></TD>
+</TR>
+<TR>
+    <TD align=right><b><TMPL_VAR lang_premium_plans></b></TD>
+    <TD><input type="text" name="payment_plans" value="<TMPL_VAR payment_plans>" size=56><br><small><TMPL_VAR lang_payments_format><br>e.g: <b>5.00=7,9.00=14,15.00=30</b></small></TD>
+</TR>
+<TR>
+    <TD align=right><b><TMPL_VAR lang_currency></b></TD>
+    <TD><input type="text" name="currency_code" value="<TMPL_VAR currency_code>" size=3> e.g. USD, EUR</TD>
+</TR>
+<TR>
+    <TD align=right><b><TMPL_VAR lang_your> PayPal E-mail</b></TD>
+    <TD><input type="text" name="paypal_email" value="<TMPL_VAR paypal_email>" size=36> <TMPL_VAR lang_optional></TD>
+</TR>
+<TMPL_IF m_m>
+<TR>
+    <TD align=right><b>PayPal subscriptions</b></TD>
+    <TD><input type="checkbox" name="paypal_subscription" value="1" id="ppsub"<TMPL_IF paypal_subscription> checked</TMPL_IF>> <label for="ppsub"><TMPL_VAR lang_enabled></TD>
+</TR>
+</TMPL_IF>
+<TR>
+    <TD align=right><b><TMPL_VAR lang_your> 2Checkout SID</b></TD>
+    <TD><input type="text" name="two_checkout_sid" value="<TMPL_VAR two_checkout_sid>" size=7> <TMPL_VAR lang_optional></TD>
+</TR>
+<TMPL_IF m_m>
+<TR>
+    <TD align=right><b><TMPL_VAR lang_your> AlertPay E-mail</b></TD>
+    <TD><input type="text" name="alertpay_email" value="<TMPL_VAR alertpay_email>" size=36> <TMPL_VAR lang_optional></TD>
+</TR>
+<TR>
+    <TD align=right><b>Webmoney merchant wallet</b></TD>
+    <TD><input type="text" name="webmoney_merchant_id" value="<TMPL_VAR webmoney_merchant_id>" size=36> <TMPL_VAR lang_optional></TD>
+</TR>
+<TR>
+    <TD align=right><b>Webmoney secret key</b></TD>
+    <TD><input type="text" name="webmoney_secret_key" value="<TMPL_VAR webmoney_secret_key>" size=36> <TMPL_VAR lang_optional></TD>
+</TR>
+<TR>
+    <TD align=right><b>SMSCoin Purse ID</b></TD>
+    <TD><input type="text" name="smscoin_id" value="<TMPL_VAR smscoin_id>" size=5> <TMPL_VAR lang_optional></TD>
+</TR>
+<TR>
+    <TD align=right><b>DaoPay Application Code</b></TD>
+    <TD><input type="text" name="daopay_app_id" value="<TMPL_VAR daopay_app_id>" size=6> <TMPL_VAR lang_optional> [<a href="http://www.sibsoft.net/xfs/info-daopay.html" onClick="return OpenWin(this.href,480,260)" class="url2">?</a>]</TD>
+</TR>
+<TR>
+    <TD align=right><b>Plimus Contract ID</b></TD>
+    <TD><input type="text" name="plimus_contract_id" value="<TMPL_VAR plimus_contract_id>" size=7> <TMPL_VAR lang_optional></TD>
+</TR>
+<TR>
+    <TD align=right><b>Moneybookers e-mail</b></TD>
+    <TD><input type="text" name="moneybookers_email" value="<TMPL_VAR moneybookers_email>" size=24> <TMPL_VAR lang_optional></TD>
+</TR>
+<TR>
+    <TD align=right><b>CashU Merchant ID</b></TD>
+    <TD><input type="text" name="cashu_merchant_id" value="<TMPL_VAR cashu_merchant_id>" size=16> <TMPL_VAR lang_optional></TD>
+</TR>
+<TMPL_ELSE>
+<TR>
+    <TD colspan=2 align=center><a href="http://sibsoft.net/cgi-bin/client.cgi?id=<TMPL_VAR cliid>" target=_blank>Get more payment gateways</a></TD>
+</TR>
+</TMPL_IF>
+<TR>
+    <TD align=right><b>Text-link-ads XML Key</b></TD>
+    <TD><input type="text" name="tla_xml_key" value="<TMPL_VAR tla_xml_key>" size=26> <TMPL_VAR lang_optional><TMPL_IF tla_msg><br><b class="err"><TMPL_VAR tla_msg></b></TMPL_IF></TD>
+</TR>
+
+<TR class="hdr"><TD colspan=2>Profits</TD></TR>
+<TR>
+    <TD align=right><b>Affiliate receive </b></TD>
+    <TD><input type="text" name="sale_aff_percent" value="<TMPL_VAR sale_aff_percent>" size=3>% from each Premium account sale</TD>
+</TR>
+<TR>
+    <TD align=right><b>Affiliate receive </b></TD>
+    <TD><input type="text" name="referral_aff_percent" value="<TMPL_VAR referral_aff_percent>" size=3>% earned money from each his referral</TD>
+</TR>
+<TR>
+    <TD align=right><b>Minimal payout </b></TD>
+    <TD>$<input type="text" name="min_payout" value="<TMPL_VAR min_payout>" size=4></TD>
+</TR>
+<TR>
+    <TD align=right><b>Delete file money </b></TD>
+    <TD><input type="checkbox" name="del_money_file_del" value="1"<TMPL_IF del_money_file_del> checked</TMPL_IF>> when deleting user files by admin</TD>
+</TR>
+<TR>
+    <TD align=right><b>Allow user to convert</b></TD>
+    <TD>$<input type="text" name="convert_money" value="<TMPL_VAR convert_money>" size=4> to <input type="text" name="convert_days" value="<TMPL_VAR convert_days>" size=3> days premium account <small>(Extend existing or Create new)</small></TD>
+</TR>
+<TR>
+    <TD align=right><b>Payout systems list </b></TD>
+    <TD><input type="text" name="payout_systems" value="<TMPL_VAR payout_systems>" size=64> <small>comma delimited</small></TD>
+</TR>
+
+<TMPL_IF enp_p>
+<TR class="hdr">
+    <TD colspan=2>Smart Profit mod</TD>
+</TR>
+<TR>
+    <TD align=right><b>Tiers filesizes</b></TD>
+    <TD><input type="text" name="tier_sizes" value="<TMPL_VAR tier_sizes>" size=24 class="myForm"> Apply rule below is filesize > X Mb</TD>
+</TR>
+<TR>
+    <TD align=right><b>Tier1</b></TD>
+    <TD>Countries:<input type="text" name="tier1_countries" value="<TMPL_VAR tier1_countries>" size=27 class="myForm"> Money: $<input type="text" name="tier1_money" value="<TMPL_VAR tier1_money>" size=12 class="myForm"> per 1000 downloads</TD>
+</TR>
+<TR>
+    <TD align=right><b>Tier2</b></TD>
+    <TD>Countries:<input type="text" name="tier2_countries" value="<TMPL_VAR tier2_countries>" size=27 class="myForm"> Money: $<input type="text" name="tier2_money" value="<TMPL_VAR tier2_money>" size=12 class="myForm"> per 1000 downloads</TD>
+</TR>
+<TR>
+    <TD align=right><b>Tier3</b></TD>
+    <TD>Countries:<input type="text" name="tier3_countries" value="OTHER" size=27 class="myForm" disabled> Money: $<input type="text" name="tier3_money" value="<TMPL_VAR tier3_money>" size=12 class="myForm"> per 1000 downloads</TD>
+</TR>
+<TR>
+    <TD align=right><b>Max money last 24 hours</b></TD>
+    <TD>$<input type="text" name="max_money_last24" value="<TMPL_VAR max_money_last24>" size=2 class="myForm"> from same IP address</TD>
+</TR>
+<TMPL_ELSE>
+<TR>
+    <TD align=right><b>Add money only when filesize more</b></TD>
+    <TD><input type="text" name="money_filesize_limit" value="<TMPL_VAR money_filesize_limit>" size=5> Mb <small>(0 to allow all files)</small></TD>
+</TR>
+<TR>
+    <TD align=right><b>Add money per 1000 downloads</b></TD>
+    <TD>
+        <TMPL_VAR lang_anonymous>: $<input type="text" name="dl_money_anon" value="<TMPL_VAR dl_money_anon>" size=3> &nbsp; 
+        <TMPL_VAR lang_registered>: $<input type="text" name="dl_money_reg" value="<TMPL_VAR dl_money_reg>" size=3> &nbsp; 
+        <TMPL_VAR lang_premium>: $<input type="text" name="dl_money_prem" value="<TMPL_VAR dl_money_prem>" size=3>
+    </TD>
+</TR>
+</TMPL_IF>
+
+</Table>
+</div>
+
+</div>
+</div>
+
+<br>
+<input type="submit" name="save" value=" <TMPL_VAR lang_save_settings> ">
+<br><br>
+
+</Form>
+<script language="JavaScript" type="text/javascript" src="<TMPL_VAR site_url>/tabber.js"></script>
+<script language="JavaScript" type="text/javascript" CHARSET="UTF-8" src="<TMPL_VAR site_url>/jquery.enable.disable.plugin.min.js"></script>
+<script>
+$('#mod_video input:not(#mdv):enabled').EnableDisable({ enabler: '#mdv' });
+$('#mod_image input:not(#mdi)').EnableDisable({ enabler: '#mdi' });
+$('#mod_leech textarea').EnableDisable({ enabler: '#mdr' });
+</script>

@@ -1,0 +1,44 @@
+<h3><TMPL_VAR lang_adm_server_mgmt></h3>
+<Table class="tbl1" cellspacing=1 cellpadding=3>
+<TR class="hdr">
+<TD>ID</TD>
+<TD><TMPL_VAR lang_server_name></TD>
+<TD><TMPL_VAR lang_status></TD>
+<TD><TMPL_VAR lang_users></TD>
+<TD><TMPL_VAR lang_files_hdr></TD>
+<TD><TMPL_VAR lang_disk_used></TD>
+<TD>IP</TD>
+<TD><TMPL_VAR lang_created></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TMPL_LOOP servers>
+<TR align=center>
+<TD><TMPL_VAR srv_id></TD>
+<TD align=left><a href="?op=admin_server_add&srv_id=<TMPL_VAR srv_id>"><b><TMPL_VAR srv_name></b></a></TD>
+<TD><TMPL_VAR srv_status></TD>
+<TD><TMPL_VAR user_types></TD>
+<TD><a href="?op=admin_files&srv_id=<TMPL_VAR srv_id>"><TMPL_VAR srv_files></a></TD>
+<TD align=left><b><TMPL_VAR srv_disk_percent>%</b> (<TMPL_VAR srv_disk> <TMPL_VAR lang_of> <TMPL_VAR srv_disk_max> Gb)</TD>
+<TD><TMPL_VAR srv_ip></TD>
+<TD><TMPL_VAR srv_created></TD>
+<TD><a href="?op=admin_server_del&srv_id=<TMPL_VAR srv_id>" onClick="return confirm('WARNING: Delete server and all its files?')"><img src="<TMPL_VAR site_url>/images/del.gif" border=0></a></TD>
+<TD><a href="?op=admin_server_import&srv_id=<TMPL_VAR srv_id>"><TMPL_VAR lang_import_files></a></TD>
+</TR>
+</TMPL_LOOP>
+</Table>
+<br>
+<input type="button" value=" <TMPL_VAR lang_add_new_server> " onClick="document.location='?op=admin_server_add'">
+<br><br>
+<Table class="tbl1" cellpadding=4 cellspacing=1>
+<TR class="hdr"><TD><TMPL_VAR lang_special_functions></TD></TR>
+<TR><TD align=center>
+<input type="button" value="Run cron.pl" onClick="document.location='<TMPL_VAR site_cgi>/cron.pl'">
+<br><br>
+<input type="button" value="<TMPL_VAR lang_run_check_db_file>" onClick="document.location='?op=admin_check_db_file'">
+<br><br>
+<input type="button" value="<TMPL_VAR lang_run_check_file_db>" onClick="document.location='?op=admin_check_file_db'">
+<br><br>
+<input type="button" value=" <TMPL_VAR lang_update_srv_stats> " onClick="document.location='?op=admin_update_srv_stats'">
+</TD></TR>
+</Table>

@@ -1,0 +1,18 @@
+RewriteEngine On
+Options +FollowSymlinks
+
+RewriteRule view-(.*) view.php?filename=$1
+
+ErrorDocument 300 /gallery.php
+ErrorDocument 301 /gallery.php
+ErrorDocument 302 /gallery.php
+ErrorDocument 303 /gallery.php
+ErrorDocument 400 /gallery.php
+ErrorDocument 401 /gallery.php
+ErrorDocument 402 /gallery.php
+ErrorDocument 403 /gallery.php
+ErrorDocument 404 /gallery.php
+ErrorDocument 500 /gallery.php
+ErrorDocument 501 /gallery.php
+ErrorDocument 502 /gallery.php
+ErrorDocument 503 /gallery.php

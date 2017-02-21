@@ -1,0 +1,9 @@
+-------------------------------------------------
+  Code Canopy URL Shortner  V2.0
+-------------------------------------------------
+
+
+V2.0	
+----------------------
+Remove all files from v1.6 leaving a blank directory. The only part of v1.6 that will be reused in v2.0 is the db.
+Upload all v2.0 files. Visit the file upload location in your browser and click on upgrade from the top of the install page and follow the on screen instructions.

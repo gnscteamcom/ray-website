@@ -1,0 +1,294 @@
+<Script type="text/javascript">
+var ext_allowed='<TMPL_VAR ext_allowed>';
+var ext_not_allowed='<TMPL_VAR ext_not_allowed>';
+var max_upload_files='<TMPL_VAR max_upload_files>';
+var descr_mode='<TMPL_VAR enable_file_descr>';
+var utype='<TMPL_VAR utype>';
+var public_on='<TMPL_VAR enable_catalogue>';
+var lang_description='<TMPL_VAR lang_description>:';
+var lang_published='<TMPL_VAR lang_public>';
+//var srv_tmp_url='<TMPL_VAR srv_tmp_url>';
+</Script>
+
+
+<TMPL_IF msg><font class="ok"><TMPL_VAR msg></font><br><br></TMPL_IF>
+
+<div id="upload_div">
+
+<div id="utmodes">
+<input type="radio" name="ut" value="file" onClick="changeUploadType('file')" id="r_file" checked><label for="r_file"><TMPL_VAR lang_file_upload></label> &nbsp; 
+<TMPL_IF mmff><input type="radio" name="ut" value="ff" onClick="changeUploadType('ff')" id="r_ff"><label for="r_ff"><TMPL_VAR lang_upload_flash></label> &nbsp; </TMPL_IF>
+<input type="radio" name="ut" value="url" onClick="changeUploadType('url')" id="r_url"><label for="r_url"><TMPL_VAR lang_url_upload></label> &nbsp; 
+<TMPL_IF mmrr><input type="radio" name="ut" value="rs" onClick="changeUploadType('rs')" id="r_rs"><label for="r_rs"><TMPL_VAR lang_free_rs_leech></label></TMPL_IF>
+<TMPL_IF mmtt> &nbsp; <input type="radio" name="ut" value="tt" onClick="changeUploadType('tt')" id="r_tt"><label for="r_tt"><TMPL_VAR lang_form_torrent></label></TMPL_IF>
+</div>
+
+<div id="div_file" class="upload_block">
+<form name="file" enctype="multipart/form-data" action="<TMPL_VAR srv_cgi_url>/upload.cgi?upload_id=" method="post" onSubmit="return StartUpload(this);">
+<input type="hidden" name="upload_type" value="file">
+<input type="hidden" name="sess_id" value="<TMPL_VAR sess_id>">
+<input type="hidden" name="srv_tmp_url" value="<TMPL_VAR srv_tmp_url>">
+<table cellpadding=0 cellspacing=0 id="div_uf1" class="div1" style="position:static;"><tr><td valign=top>
+<b><TMPL_VAR lang_up_to> <TMPL_VAR max_upload_filesize> Mb, <TMPL_VAR max_upload_files> <TMPL_VAR lang_files_max></b><br>
+<div class="upload_input"><input id="my_file_element" type="file" name="file_1" size=79></div>
+<div id="files_list"></div>
+
+<a href="#" style="line-height:20px;" onClick="$$('optidiv').style.position='static';this.style.display='none';return false;"><TMPL_VAR lang_show_advanced></a>
+<div id="optidiv">
+<TMPL_VAR lang_rcpt_email>: <input type="text" name="link_rcpt" class="myForm" size=24 maxlength=42> &nbsp; 
+<TMPL_VAR lang_link_pass>: <input type="text" name="link_pass" class="myForm" size=8>
+</div>
+<br>
+<center>
+<label for="tos"><TMPL_VAR lang_i_agree></label> <a href="tos.html"><TMPL_VAR lang_tos_short></a> <input type="checkbox" name="tos" value="1" id="tos" checked onClick="if(this.checked){this.form.submit_btn.disabled=false}else{this.form.submit_btn.disabled=true};this.blur();"><br>
+<input type="submit" name="submit_btn" value=" <TMPL_VAR lang_upload_btn> " class="btn">
+</center>
+<br>
+</td></tr></table>
+</form>
+</div>
+
+
+
+<div id="div_url" class="upload_block">
+<TMPL_IF remote_url>
+<form name="url" enctype="multipart/form-data" action="<TMPL_VAR srv_cgi_url>/upload.cgi?upload_id=" method="post" onSubmit="return StartUpload(this);">
+<input type="hidden" name="sess_id" value="<TMPL_VAR sess_id>">
+<input type="hidden" name="upload_type" value="url">
+<input type="hidden" name="srv_tmp_url" value="<TMPL_VAR srv_tmp_url>">
+<TMPL_LOOP site_logins>
+<input type="hidden" name="<TMPL_VAR name>" value="<TMPL_VAR value>">
+</TMPL_LOOP>
+
+<table cellpadding=0 cellspacing=0 id="div_uf2" class="div1" style="position:static;"><tr><td valign=top>
+<b><TMPL_VAR lang_up_to> <TMPL_VAR max_upload_filesize> Mb, <TMPL_VAR max_upload_files> <TMPL_VAR lang_files_max></b>
+
+<div id="url_mass">
+<TMPL_VAR lang_can_enter_up_to> <TMPL_VAR max_upload_files> <TMPL_VAR lang_one_per_row>
+<Textarea name="url_mass" style="width:100%;font:11px Arial;" cols=36 rows=<TMPL_VAR max_upload_files_rows>></Textarea>
+</div>
+
+<a href="#" style="line-height:20px;" onClick="$$('optidiv2').style.position='static';this.style.display='none';return false;"><TMPL_VAR lang_show_advanced></a>
+<div id="optidiv2">
+<TMPL_VAR lang_rcpt_email>: <input type="text" name="link_rcpt" class="myForm" size=24 maxlength=42> &nbsp; 
+<TMPL_VAR lang_link_pass>: <input type="text" name="link_pass" class="myForm" size=8>
+</div>
+<br>
+<center>
+<label for="tos2"><TMPL_VAR lang_i_agree></label> <a href="tos.html"><TMPL_VAR lang_tos_short></a> <input type="checkbox" name="tos" value="1" id="tos2" checked onClick="if(this.checked){this.form.submit_btn.disabled=false}else{this.form.submit_btn.disabled=true};this.blur();"><br>
+<input name="submit_btn" type="submit" value=" <TMPL_VAR lang_upload_btn> " class="btn">
+</center>
+<br>
+</td></tr></table>
+</form>
+<TMPL_ELSE>
+
+<br><br><br><b><TMPL_IF my_login><a href="?op=payments"><TMPL_VAR lang_upgrade_account></a><TMPL_ELSE><a href="?op=registration"><TMPL_VAR lang_register_on_site></a></TMPL_IF><br><TMPL_VAR lang_to_use> <TMPL_VAR lang_url_upload></b>
+
+</TMPL_IF>
+</div>
+
+
+
+<TMPL_IF mmrr>
+<div id="div_rs" class="upload_block">
+<TMPL_IF leech_on>
+    <form name="rs" enctype="multipart/form-data" action="<TMPL_VAR srv_cgi_url>/upload.cgi?upload_id=" method="post" onSubmit="return StartUpload(this);">
+    <input type="hidden" name="sess_id" value="<TMPL_VAR sess_id>">
+    <input type="hidden" name="up1oad_type" value="url">
+    <input type="hidden" name="srv_tmp_url" value="<TMPL_VAR srv_tmp_url>">
+    <table cellpadding=0 cellspacing=0 class="div1" style="position:static;height: 200px;"><tr><td valign=top>
+    <TMPL_VAR lang_you_can_leech> <b><TMPL_VAR leech_left_mb></b> MB <TMPL_VAR lang_rs_files_today>
+    <div id="url_flds">
+        <TMPL_VAR lang_can_enter_up_to> <TMPL_VAR max_upload_files> <TMPL_VAR lang_one_per_row>
+        <textarea cols=36 rows=<TMPL_VAR max_upload_files_rows> name="url_mass" class="input_url" style="width:100%;font:11px Arial;"></textarea>
+        <TMPL_VAR lang_url_leech_supported>: <TMPL_VAR supported_sites>
+    </div>
+    <br>
+    <center>
+    <label for="tos3"><TMPL_VAR lang_i_agree></label> <a href="tos.html"><TMPL_VAR lang_tos_short></a> <input type="checkbox" name="tos" value="1" id="tos3" checked onClick="if(this.checked){this.form.submit_btn.disabled=false}else{this.form.submit_btn.disabled=true};this.blur();"><br>
+    <input name="submit_btn" type="submit" value=" <TMPL_VAR lang_upload_btn> " class="btn">
+    </center>
+    <br>
+    </td></tr></table>
+    <input type="hidden" name="upload_type" value="url">
+    </form>
+<TMPL_ELSE>
+    <br><br><br>
+    <TMPL_IF max_rs_leech>
+    <b><TMPL_VAR lang_you_used_all> <TMPL_VAR max_rs_leech> <TMPL_VAR lang_rs_slots_last24></b>
+    <TMPL_ELSE>
+    <b><TMPL_IF my_login><a href="?op=payments"><TMPL_VAR lang_upgrade_account></a><TMPL_ELSE><a href="?op=registration"><TMPL_VAR lang_register_on_site></a></TMPL_IF><br><TMPL_VAR lang_to_use> <TMPL_VAR lang_free_rs_leech></b>
+    </TMPL_IF>
+</TMPL_IF>
+</div>
+</TMPL_IF>
+
+
+<TMPL_IF mmtt>
+<div id="div_tt" class="upload_block">
+<TMPL_IF mmtt_on>
+<form name="tt" enctype="multipart/form-data" action="<TMPL_VAR srv_torrent_cgi_url>/upload.cgi?upload_id=" method="post" onSubmit="if(!this.file_0.value.match(/\.torrent$/i)){alert('Not a .torrent file!');return false;}return StartUpload(this);">
+<input type="hidden" name="sess_id" value="<TMPL_VAR sess_id>">
+<input type="hidden" name="up1oad_type" value="tt">
+<input type="hidden" name="srv_tmp_url" value="<TMPL_VAR srv_torrent_tmp_url>">
+<table cellpadding=0 cellspacing=0 class="div1" style="position:static;height: 200px;"><tr><td valign=top>
+
+ <b>Choose .torrent file:</b>
+ <div class="upload_input"><input type="file" name="file_0" onChange="if(!this.value.match(/\.torrent$/)){alert('Not a .torrent file!');return false;}"></div>
+
+<br>
+<center>
+<label for="tos4"><TMPL_VAR lang_i_agree></label> <a href="tos.html"><TMPL_VAR lang_tos_short></a> <input type="checkbox" name="tos" value="1" id="tos4" checked onClick="if(this.checked){this.form.submit_btn.disabled=false}else{this.form.submit_btn.disabled=true};this.blur();"><br>
+<input name="submit_btn" type="submit" value=" <TMPL_VAR lang_upload_btn> " class="btn">
+</center>
+<br>
+</td></tr></table>
+<input type="hidden" name="upload_type" value="file">
+</form>
+<TMPL_ELSE>
+
+<br><br><br>
+
+<TMPL_IF tt_msg>
+ <b><TMPL_VAR tt_msg></b>
+<TMPL_ELSE>
+ <b><TMPL_IF my_login><a href="?op=payments"><TMPL_VAR lang_upgrade_account></a><TMPL_ELSE><a href="?op=registration"><TMPL_VAR lang_register_on_site></a></TMPL_IF><br><TMPL_VAR lang_to_use> <TMPL_VAR lang_form_torrent></b>
+</TMPL_IF>
+
+</TMPL_IF>
+</div>
+</TMPL_IF>
+
+
+
+<TMPL_IF mmff>
+<div id="div_ff" class="upload_block">
+<TMPL_IF mmff_on>
+<table cellpadding=0 cellspacing=0 id="div_uf1" class="div1"><tr><td>
+<b><TMPL_VAR lang_up_to> <TMPL_VAR max_upload_filesize> Mb, <TMPL_VAR max_upload_files> <TMPL_VAR lang_files_max></b></div>
+</td></tr></table>
+
+<input type="file" name="uploadify" id="uploadify">
+
+<div id="fileQueue" style="display:none;"></div>
+
+<input id="mfstart" name="submit_btn" type="button" value=" <TMPL_VAR lang_upload_btn> " class="btn" style="display:none;" onClick='$("#uploadify").uploadifyUpload();'>
+
+<div id="codes0" style="display:none;">
+<br>
+Download links:<br><textarea id="codes0t" cols=36 rows=5 class="myForm" style="width:500px;" onFocus="copy(this);" WRAP=OFF></textarea><br>
+</div>
+<div id="codes1" style="display:none;">
+Forum codes:<br><textarea id="codes1t" cols=36 rows=5 class="myForm" style="width:500px;" onFocus="copy(this);" WRAP=OFF></textarea><br>
+</div>
+<div id="codes2" style="display:none;">
+HTML codes:<br><textarea id="codes2t" cols=36 rows=5 class="myForm" style="width:500px;" onFocus="copy(this);" WRAP=OFF></textarea><br><br>
+</div>
+
+<div id="filesUploaded" style="width:500px;"></div>
+
+<script type="text/javascript" src="<TMPL_VAR site_url>/swfobject.js"></script>
+<script type="text/javascript" src="<TMPL_VAR site_url>/jquery.uploadify.v2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#uploadify").uploadify({
+		'uploader'       : '<TMPL_VAR site_url>/uploadify.swf',
+		'script'         : '<TMPL_VAR srv_cgi_url>/up_flash.cgi',
+		'cancelImg'      : '<TMPL_VAR site_url>/images/cancel.png',
+		'buttonImg'      : '<TMPL_VAR site_url>/images/browse-files.png',
+		'width'          : 130,
+		'queueID'        : 'fileQueue',
+		'auto'           : false,
+        'multi'          : true,
+        'wmode'          : 'transparent',
+        'scriptData'     : {"sess_id" : "<TMPL_VAR sess_id>"},
+        'fileExt'        : '<TMPL_VAR exts>',
+        'fileDesc'       : 'Allowed files: <TMPL_VAR exts>',
+        'queueSizeLimit' : <TMPL_VAR max_upload_files>,
+        'sizeLimit'      : <TMPL_VAR max_upload_filesize_bytes>,
+        'onSelectOnce'   : function(){$('#fileQueue').show();$('#mfstart').show();},
+        'onOpen'         : function(){$('#mfstart').hide();},
+        'onAllComplete'  : function(){$('#fileQueue').hide();$('#mfstart').hide();},
+        'onComplete'     : function(event, queueID, fileObj, response, data)
+{
+    aa = response.split(':');
+    var code=aa[0];
+    var real=aa[1];
+    var dx=aa[2];
+    var fname=aa[3];
+    var ftype=aa[4];
+    link_url='<TMPL_VAR site_url>/'+code+'/'+fname+'.html';
+    forum_code='[URL='+link_url+']'+fname+'[/URL]';
+    html_code='<a href="'+link_url+'" target="_blank">'+fname+'<\/a>';
+    var img_code='';
+    if(ftype=='image')
+    {
+        img_url='<TMPL_VAR srv_htdocs_url>/i/'+dx+'/'+real+'_t.jpg';
+        img_code='<tr><td align=right><b>Preview:<\/b><\/td><td><img src="'+img_url+'"><\/td><\/tr>';
+        forum_code='[URL='+link_url+'][IMG]'+img_url+'[/IMG][/URL]';
+        html_code='<a href="'+link_url+'" target="_blank"><img src="'+img_url+'" border=0><\/a>';
+    }
+
+    $('#tblres').show();
+
+    $('#codes0').show();
+    $$('codes0t').value+=link_url+'\n';
+    
+    $('#codes1').show();
+    $$('codes1t').value+=forum_code+'\n';
+    
+    $('#codes2').show();
+    $$('codes2t').value+=html_code+'\n';
+
+    if(real && fname)
+    {
+      txt='<table cellspacing=0 cellpadding=2 class="result_slot" style="width:100%;margin-top:7px;">'+
+          '<tr><td align=right><b>File:<\/b><\/td><td><a href="'+link_url+'"><b>'+fname+'<\/b><\/a><\/td><\/tr>'+
+          img_code+
+          '<tr><td align=right><b>Direct Link:<\/b><\/td><td><input type="text" onFocus="copy(this);" style="width:99%" value="'+link_url+'"><\/td><\/tr>'+
+          '<tr><td align=right width=5% nowrap><b>Forum code:<\/b><\/td><td><input type="text" onFocus="copy(this);" style="width:99%" value="'+forum_code+'"><\/td><\/tr>'+
+          '<tr><td align=right><b>HTML code:<\/b><\/td><td><input type="text" onFocus="copy(this);" style="width:99%" value=\''+html_code+'\'><\/td><\/tr><\/table>';
+    }
+    else
+    {
+      txt='<table cellspacing=0 cellpadding=2 class="result_slot" style="margin-top:7px;">'+ 
+          '<tr><td align=right><b class="err">'+response+'<\/b><\/td><\/tr><\/table>';
+    }
+    $('#filesUploaded').append(txt);
+}
+
+    });
+});
+</script>
+
+<TMPL_ELSE>
+ <br><br><br>
+ <b><TMPL_IF my_login><a href="?op=payments"><TMPL_VAR lang_upgrade_account></a><TMPL_ELSE><a href="?op=registration"><TMPL_VAR lang_register_on_site></a></TMPL_IF><br><TMPL_VAR lang_to_use> <TMPL_VAR lang_upload_flash></b>
+</TMPL_IF>
+</div>
+</TMPL_IF>
+
+
+<div id="progress_div">
+<iframe src="blank.html" id="progress_frame" name="transfer2" SCROLLING=NO frameborder=0 style="width: 395px; height: 200px;"></iframe>
+</div>
+
+</div>
+
+<TMPL_IF user_total>
+<div style="margin-top:5px;">
+<TMPL_VAR lang_srv_stats>: 
+<TMPL_VAR lang_files_hdr>: <TMPL_VAR files_total> | 
+<TMPL_VAR lang_disk_used>: <TMPL_VAR used_total> Gb | 
+<TMPL_VAR lang_users>: <TMPL_VAR user_total>
+</div>
+</TMPL_IF>
+
+<TMPL_INCLUDE text-link-ads.html>
+
+<iframe src="javascript:false;" name="xupload" style="position:absolute;top:-9999px;"></iframe>
+<Script type="text/javascript">
+InitUploadSelector('files_list','my_file_element','<TMPL_VAR max_upload_files>');
+document.getElementById('progress_frame').allowTransparency="true";
+</Script>

@@ -1,0 +1,123 @@
+<TMPL_IF torrents>
+<Table class="tbl1">
+<TR><TH colspan=6>Torrents running<br><small>Progress updating every 15 seconds</small></TH></TR>
+<TR>
+    <TH>Torrent</TH>
+    <TH>Progress</TH>
+    <TH>Download</TH>
+    <TH>Upload</TH>
+    <TH>Working</TH>
+    <TH></TH>
+</TR>
+<TMPL_LOOP torrents>
+<TR>
+    <TD onmouseover="return tooltip('<TMPL_VAR file_list>','Torrent files');" onmouseout="return hideTip();"><TMPL_VAR title></TD>
+    <TD align=right><TMPL_VAR done> of <TMPL_VAR total> Mb (<TMPL_VAR percent>%)</TD>
+    <TD align=right><TMPL_VAR down_speed> Kb/s</TD>
+    <TD align=right><TMPL_VAR up_speed> Kb/s</TD>
+    <TD><TMPL_VAR working></TD>
+    <TD><a href="?op=my_files;del_torrent=<TMPL_VAR sid>" onClick="return confirm('<TMPL_VAR lang_delete_file>')"><img src="<TMPL_VAR site_url>/images/del.gif" border=0></a></TD>
+</TR>
+</TMPL_LOOP>
+</Table>
+<br><br>
+<script type="text/javascript" src="<TMPL_VAR site_url>/tips.js"></script>
+<div id="tiplayer" style="position:absolute; visibility:hidden; z-index:10000;"></div>
+</TMPL_IF>
+
+<Form style="margin:0;" method="POST" action="<TMPL_VAR site_url>/" name="F1">
+<input type="hidden" name="op" value="my_files">
+<input type="hidden" name="fld_id" value="<TMPL_VAR folder_id>">
+<input type="text" name="key" value="<TMPL_VAR key>" size=24><input type="submit" value="<TMPL_VAR lang_search>"><br>
+
+<div style="margin:5px;">
+<TMPL_VAR lang_used_disk_space> <TMPL_VAR total_size><TMPL_IF disk_space> <TMPL_VAR lang_of> <TMPL_VAR disk_space> Mb</TMPL_IF> / <TMPL_VAR total_files> <TMPL_VAR lang_files>
+<br>
+[<a href="?op=my_files_export" target="_blank"><TMPL_VAR lang_export_all></a>]&nbsp;
+[<a href="?op=my_files_export&amp;fld_id=<TMPL_VAR folder_id>" target="_blank"><TMPL_VAR lang_export_folder></a>]
+[<a href="#" onClick="document.F1.op.value='my_files_export';document.F1.target='_blank';document.F1.submit();"><TMPL_VAR lang_export_selected></a>]
+</div>
+
+<TMPL_VAR paging>
+
+<Table class="tbl1" cellpadding=3 cellspacing=1 id="xfiles">
+<TMPL_IF folder_name><TR class="hdr"><TD colspan=9 style="text-align:left;">
+<TMPL_VAR folder_name> &nbsp; <a href="<TMPL_VAR site_url>/users/<TMPL_VAR my_login>/<TMPL_VAR folder_id>/<TMPL_VAR folder_name>" class="txt12"><TMPL_VAR lang_pub_link></a>
+<TMPL_IF fld_descr><div class="txt12"><TMPL_VAR fld_descr></div></TMPL_IF>
+</TD></TR></TMPL_IF>
+<TR class="hdr"><TD colspan=9 style="text-align:left"><input type="text" name="create_new_folder" size=18 class="myForm"><input type="submit" value="<TMPL_VAR lang_create_new_folder>" class="btn2"></TD></TR>
+<TMPL_IF folders>
+<TMPL_LOOP folders>
+<TR>
+<TD><img src="<TMPL_VAR site_url>/images/folder.gif" alt="Folder"></TD>
+<TD colspan=<TMPL_IF enable_file_comments>5<TMPL_ELSE>4</TMPL_IF>><a href="?op=my_files&amp;fld_id=<TMPL_VAR fld_id>"><b><TMPL_VAR fld_name></b></a></TD>
+<TMPL_IF usr_id>
+<TD align=center><TMPL_VAR files_num> <TMPL_VAR lang_files></TD>
+<TD><a href="?op=fld_edit&amp;fld_id=<TMPL_VAR fld_id>"><img src="<TMPL_VAR site_url>/images/edit.gif" border=0 alt="<TMPL_VAR lang_edit>"></a></TD>
+<TD><a href="?op=my_files&amp;fld_id=<TMPL_VAR folder_id>&amp;del_folder=<TMPL_VAR fld_id>" onClick="return confirm('<TMPL_VAR lang_delete_folder>')"><img src="<TMPL_VAR site_url>/images/del.gif" border=0></a></TD>
+<TMPL_ELSE>
+<TD colspan=3></TD>
+</TMPL_IF>
+</TR>
+</TMPL_LOOP>
+</TMPL_IF>
+<TR class="hdr">
+<TD><input type="checkbox" id="selall"></TD>
+<TD><TMPL_VAR s_file_name><TMPL_VAR lang_fname_descr><TMPL_VAR s2_file_name></TD>
+<TD><TMPL_VAR s_file_size><TMPL_VAR lang_filesize><TMPL_VAR s2_file_size></TD>
+<TD title="<TMPL_VAR lang_number_downloads>"><TMPL_VAR s_file_downloads><TMPL_VAR lang_downloads_short><TMPL_VAR s2_file_downloads></TD>
+<TMPL_IF enable_file_comments><TD title="<TMPL_VAR lang_number_comments>"><TMPL_VAR s_comments><TMPL_VAR lang_comments_short><TMPL_VAR s2_comments></TD></TMPL_IF>
+<TD title="<TMPL_VAR lang_published>"><TMPL_VAR s_file_public><TMPL_VAR lang_published_short><TMPL_VAR s2_file_public></TD>
+<TD><TMPL_VAR s_file_created><TMPL_VAR lang_uploaded><TMPL_VAR s2_file_created></TD>
+<TD colspan=2>&nbsp;</TD>
+</TR>
+<TMPL_IF files>
+<TMPL_LOOP files>
+<TR align=center<TMPL_UNLESS __ODD__> class="hi"</TMPL_UNLESS>>
+<TD><input type="checkbox" name="file_id" value="<TMPL_VAR file_id>"></TD>
+<TD align=left><a href="<TMPL_VAR download_link>"><TMPL_VAR file_name_txt></a><TMPL_IF file_password><img src="<TMPL_VAR site_url>/images/lock.gif" title="Password"></TMPL_IF><TMPL_IF file_descr><br><small><TMPL_VAR file_descr></small></TMPL_IF></TD>
+<TD align=right><TMPL_VAR file_size></TD>
+<TD><TMPL_VAR file_downloads></TD>
+<TMPL_IF enable_file_comments><TD><TMPL_VAR comments></TD></TMPL_IF>
+<TD id="td<TMPL_VAR file_id>" <TMPL_IF file_public> class='pub'</TMPL_IF>><input type="checkbox" name="pub" value="1" id="p<TMPL_VAR file_id>"<TMPL_IF file_public> checked</TMPL_IF> onClick="jah('?op=my_files&amp;file_id=<TMPL_VAR file_id>&amp;set_public='+this.checked)"></TD>
+<TD><TMPL_VAR created></TD>
+<TD><a href="?op=file_edit&amp;file_code=<TMPL_VAR file_code>"><img src="<TMPL_VAR site_url>/images/edit.gif" border=0 alt="<TMPL_VAR lang_edit>"></a></TD>
+<TD><a href="?op=my_files&amp;del_code=<TMPL_VAR file_code>" onClick="return confirm('<TMPL_VAR lang_delete_file>')"><img src="<TMPL_VAR site_url>/images/del.gif" border=0 alt="<TMPL_VAR lang_del_file>"></a></TD>
+</TR>
+</TMPL_LOOP>
+<TMPL_ELSE>
+<TR><TD align=center colspan=9><TMPL_VAR lang_no_files_yet></TD></TR>
+</TMPL_IF>
+<TR class="hdr"><TD colspan=9 style="text-align:left">
+<input type="submit" name="del_selected" value="<TMPL_VAR lang_delete_selected>" class="btn2" onClick="return confirm('<TMPL_VAR lang_delete_confirm>')">
+&nbsp; 
+<Select name="to_folder" onChange="this.form.submit();">
+<option value="">- <TMPL_VAR lang_move_to_folder> -</option>
+<option value="0"> / </option>
+<TMPL_LOOP folders_tree>
+<option value="<TMPL_VAR fld_id>"><TMPL_VAR pre><TMPL_VAR fld_name></option>
+</TMPL_LOOP>
+</Select> &nbsp;
+
+<input type="submit" name="set_public_multi" value="<TMPL_VAR lang_publish>" class="btn2">
+&nbsp;
+<!--input type="submit" name="set_private" value="<TMPL_VAR lang_unpublish>" class="btn2"-->
+&nbsp; 
+</TD></TR>
+</Table>
+</Form>
+
+<TMPL_VAR paging>
+
+<script type="text/javascript" language="JavaScript">
+$(document).ready(function(){
+    $("#xfiles input[name=file_id]").change( function(){ $(this).parent().parent().toggleClass('hi2'); } );
+    $("#selall").change(function(){ 
+           var sel=this.checked;
+           $("#xfiles input[name=file_id]:enabled").each(function(){
+               $(this).attr('checked',sel);
+               if(sel){$(this).parent().parent().addClass('hi2');} else {$(this).parent().parent().removeClass('hi2');}
+           });
+    });
+});
+</script>

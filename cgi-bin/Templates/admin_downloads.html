@@ -1,0 +1,13 @@
+<h3><TMPL_VAR lang_last_downloads></h3>
+<Table class="tbl1" cellpadding=3 cellspacing=1>
+<TR class="hdr"><TD><TMPL_VAR lang_date></TD><TD>Money</TD><TD>IP</TD><TD>Referer</TD></TR>
+<TMPL_LOOP list>
+<TR>
+<TD><TMPL_VAR created></TD>
+<TD align=center><TMPL_VAR money></TD>
+<TD><TMPL_VAR ip></TD>
+<TD><TMPL_VAR referer></TD>
+</TR>
+</TMPL_LOOP>
+</Table>
+<TMPL_VAR paging>

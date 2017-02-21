@@ -1,0 +1,68 @@
+<table cellpadding="3" cellspacing="1" class="tbl1">
+<tr class="hdr">
+    <td width="25%"></td>
+    <TMPL_IF enabled_anon><td width="25%"><b><TMPL_VAR lang_free></b></td></TMPL_IF>
+    <TMPL_IF enabled_reg><td width="25%"><b><TMPL_VAR lang_registered></b></td></TMPL_IF>
+    <TMPL_IF enabled_prem><td width="25%"><b><TMPL_VAR lang_premium></b></td></TMPL_IF>
+</tr>
+<tr align="center">
+    <td align=right><b><TMPL_VAR lang_max_file_size></b></td>
+    <TMPL_IF enabled_anon><td><TMPL_VAR max_upload_filesize_anon></td></TMPL_IF>
+    <TMPL_IF enabled_reg><td><TMPL_VAR max_upload_filesize_reg></td></TMPL_IF>
+    <TMPL_IF enabled_prem><td><TMPL_VAR max_upload_filesize_prem></td></TMPL_IF>
+</tr>
+<tr align="center">
+    <td align=right><b><TMPL_VAR lang_disk_space_limit></b></td>
+    <TMPL_IF enabled_anon><td>-</td></TMPL_IF>
+    <TMPL_IF enabled_reg><td><TMPL_VAR disk_space_reg> Mb</td></TMPL_IF>
+    <TMPL_IF enabled_prem><td><TMPL_VAR disk_space_prem> Mb</td></TMPL_IF>
+</tr>
+<tr align="center">
+    <td align=right><b><TMPL_VAR lang_download_volume></b></td>
+    <TMPL_IF enabled_anon><td><TMPL_VAR bw_limit_anon> Mb in <TMPL_VAR bw_limit_days> days</td></TMPL_IF>
+    <TMPL_IF enabled_reg><td><TMPL_VAR bw_limit_reg> Mb in <TMPL_VAR bw_limit_days> days</td></TMPL_IF>
+    <TMPL_IF enabled_prem><td><TMPL_VAR bw_limit_prem> Mb in <TMPL_VAR bw_limit_days> days</td></TMPL_IF>
+</tr>
+<tr align="center">
+    <td align=right><b><TMPL_VAR lang_url_upload></b></td>
+    <TMPL_IF enabled_anon><td><TMPL_IF remote_url_anon><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'><TMPL_ELSE>-</TMPL_IF></td></TMPL_IF>
+    <TMPL_IF enabled_reg><td><TMPL_IF remote_url_reg><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'><TMPL_ELSE>-</TMPL_IF></td></TMPL_IF>
+    <TMPL_IF enabled_prem><td><TMPL_IF remote_url_prem><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'><TMPL_ELSE>-</TMPL_IF></td></TMPL_IF>
+</tr>
+<tr align="center">
+    <td align=right><b><TMPL_VAR lang_down_acc_support></b></td>
+    <TMPL_IF enabled_anon><td><TMPL_IF direct_links_anon><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'><TMPL_ELSE>-</TMPL_IF></td></TMPL_IF>
+    <TMPL_IF enabled_reg><td><TMPL_IF direct_links_reg><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'><TMPL_ELSE>-</TMPL_IF></td></TMPL_IF>
+    <TMPL_IF enabled_prem><td><TMPL_IF direct_links_prem><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'><TMPL_ELSE>-</TMPL_IF></td></TMPL_IF>
+</tr>
+<tr align="center">
+    <td align=right><b><TMPL_VAR lang_downloads_resume></b></td>
+    <TMPL_IF enabled_anon><td><TMPL_IF direct_links_anon><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'><TMPL_ELSE>-</TMPL_IF></td></TMPL_IF>
+    <TMPL_IF enabled_reg><td><TMPL_IF direct_links_reg><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'><TMPL_ELSE>-</TMPL_IF></td></TMPL_IF>
+    <TMPL_IF enabled_prem><td><TMPL_IF direct_links_prem><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'><TMPL_ELSE>-</TMPL_IF></td></TMPL_IF>
+</tr>
+<tr align="center">
+    <td align=right><b><TMPL_VAR lang_downloads_delay></b></td>
+    <TMPL_IF enabled_anon><td><TMPL_IF download_countdown_anon><TMPL_VAR download_countdown_anon> <TMPL_VAR lang_seconds><TMPL_ELSE><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'></TMPL_IF></td></TMPL_IF>
+    <TMPL_IF enabled_reg><td><TMPL_IF download_countdown_reg><TMPL_VAR download_countdown_reg> <TMPL_VAR lang_seconds><TMPL_ELSE><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'></TMPL_IF></td></TMPL_IF>
+    <TMPL_IF enabled_prem><td><TMPL_IF download_countdown_prem><TMPL_VAR download_countdown_prem> <TMPL_VAR lang_seconds><TMPL_ELSE><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'></TMPL_IF></td></TMPL_IF>
+</tr>
+<tr align="center">
+    <td align=right><b><TMPL_VAR lang_no_captcha></b></td>
+    <TMPL_IF enabled_anon><td><TMPL_IF captcha_anon>-<TMPL_ELSE><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'></TMPL_IF></td></TMPL_IF>
+    <TMPL_IF enabled_reg><td><TMPL_IF captcha_reg>-<TMPL_ELSE><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'></TMPL_IF></td></TMPL_IF>
+    <TMPL_IF enabled_prem><td><TMPL_IF captcha_prem>-<TMPL_ELSE><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'></TMPL_IF></td></TMPL_IF>
+</tr>
+<tr align="center">
+    <td align=right><b><TMPL_VAR lang_advertisements></b></td>
+    <TMPL_IF enabled_anon><td><TMPL_IF ads_anon>-<TMPL_ELSE><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'></TMPL_IF></td></TMPL_IF>
+    <TMPL_IF enabled_reg><td><TMPL_IF ads_reg>-<TMPL_ELSE><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'></TMPL_IF></td></TMPL_IF>
+    <TMPL_IF enabled_prem><td><TMPL_IF ads_prem>-<TMPL_ELSE><img src="<TMPL_VAR site_url>/images/yep.gif" width=24 height=24 alt='Yes'></TMPL_IF></td></TMPL_IF>
+</tr>
+<tr align="center">
+    <td align=right><b><TMPL_VAR lang_when_files_deleted></b></td>
+    <TMPL_IF enabled_anon><td><TMPL_VAR files_expire_anon></td></TMPL_IF>
+    <TMPL_IF enabled_reg><td><TMPL_VAR files_expire_reg></td></TMPL_IF>
+    <TMPL_IF enabled_prem><td><TMPL_VAR files_expire_prem></td></TMPL_IF>
+</tr>
+</table>

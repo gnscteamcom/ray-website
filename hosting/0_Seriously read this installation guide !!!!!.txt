@@ -1,0 +1,31 @@
+
+
+Please carefully read and follow every single step in this installation guide.
+
+*** >>> Installation guide <<< ***
+1- Create a database and assign user to it with full permissions.
+2- Upload files to your hosting via FTP ONLY.
+3- Upload the following files through FTP (not cpanel)
+.htaccess - images/.htacess
+4- Chmod the folder "images"to writable value of 777
+5- Run the installer at site.com/install.php
+6- Remove the file "install.php" from the server.
+7- Open Admin panel located at Site.com/admin/index.php
+With the admin account you created during install and customize your site settings from settings page.
+
+After Install:
+
+1- You can customize the site logo from the PSD file located at i/logo.psd
+2- You can customize the watermarking images by putting watermark.png (200*50) and th_watermark (50*13).
+
+
+*** >>> Upgrade guide <<< ***
+
+Upgrade from old version to this version
+1- Delete all old install files except
+inc/db.php and "images" folder
+2- Upload all the script new files WITHOUT the inc/db.php file.
+3- Upload the following files through FTP (not cpanel)
+.htaccess - images/.htacess - images/index.php
+4- Run the file "upgrade.php" one time then remove the file.
+

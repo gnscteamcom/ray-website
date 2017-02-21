@@ -1,0 +1,24 @@
+<h3><TMPL_VAR lang_last_downloads></h3>
+
+<Form>
+<input type="hidden" name="op" value="admin_downloads_all">
+Downloader login: <input type="text" name="usr_login" value="<TMPL_VAR usr_login>" size=16><br>
+Downloader IP: <input type="text" name="ip" value="<TMPL_VAR ip>" size=15><br>
+<input type="submit" value="Filter">
+</Form>
+<br>
+
+<Table class="tbl1" cellpadding=3 cellspacing=1>
+<TR class="hdr"><TD>Date</TD><TD><TMPL_VAR lang_file_name></TD><TD>Money</TD><TD>User</TD><TD>IP</TD><TD>Referer</TD></TR>
+<TMPL_LOOP list>
+<TR align=center>
+    <TD><TMPL_VAR created></TD>
+    <TD align=left><a href="<TMPL_VAR download_link>"><TMPL_VAR file_name></a></TD>
+    <TD><TMPL_VAR money></TD>
+    <TD><TMPL_VAR usr_login></TD>
+    <TD><TMPL_VAR ip></TD>
+    <TD><TMPL_VAR referer></TD>
+</TR>
+</TMPL_LOOP>
+</Table>
+<TMPL_VAR paging>

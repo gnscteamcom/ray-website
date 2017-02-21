@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<HTML>
+<HEAD>
+<Title><TMPL_IF page_title><TMPL_VAR page_title><TMPL_ELSE><TMPL_VAR site_name> - <TMPL_VAR lang_page_title></TMPL_IF></Title>
+<link rel="stylesheet" type="text/css" href="<TMPL_VAR site_url>/main.css">
+<script language="JavaScript" type="text/javascript" CHARSET="UTF-8" src="<TMPL_VAR site_url>/jquery-1.3.2.min.js"></script>
+<script language="JavaScript" type="text/javascript" CHARSET="UTF-8" src="<TMPL_VAR site_url>/xupload.js"></script>
+<!--script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"></script-->
+<META http-equiv=Content-Type content="text-html; charset=UTF-8">
+<META NAME="description" CONTENT="<TMPL_IF meta_descr><TMPL_VAR meta_descr><TMPL_ELSE><TMPL_VAR site_name> - Free file upload service</TMPL_IF>">
+<META NAME="keywords"    CONTENT="<TMPL_IF meta_keywords><TMPL_VAR meta_keywords><TMPL_ELSE>file upload,share files,free upload</TMPL_IF>">
+<META NAME="author" CONTENT="Mario Junior Leptossomico">
+<TMPL_VAR header_extra>
+</HEAD>
+<BODY<TMPL_IF lang_rtl> style="direction:rtl;"</TMPL_IF>>
+<div style="position:relative;width:640px;margin-bottom:15px;margin:auto;">
+<a href="<TMPL_VAR site_url>"><img src="<TMPL_VAR site_url>/images/logo.gif" border=0 alt="<TMPL_VAR site_name>" title="<TMPL_VAR site_name>"></a>
+
+<div id="lang">
+<ul>
+<li class="top"><a href="<TMPL_VAR site_url>/?op=change_lang&lang=<TMPL_VAR language>"><span class="trf trf-<TMPL_VAR language>"></span><TMPL_VAR language2></a></li>
+<TMPL_LOOP languages>
+<li><a href="<TMPL_VAR site_url>/?op=change_lang&lang=<TMPL_VAR lang>"><span class="trf trf-<TMPL_VAR lang>"></span><TMPL_VAR lang2></a></li>
+</TMPL_LOOP>
+<!--img src="<TMPL_VAR site_url>/images/flag-<TMPL_VAR lang>.gif" alt="<TMPL_VAR lang2> language"-->
+</ul>
+</div>
+
+</div>
+
+
+<TMPL_IF ads>
+<!--Ads here-->
+</TMPL_IF>
+
+<TMPL_IF news_list>
+<TMPL_LOOP news_list>
+<div id='news_last'><a href="<TMPL_VAR site_url>/n<TMPL_VAR news_id>-<TMPL_VAR news_title2>.html"><TMPL_VAR news_title></a></div><br>
+</TMPL_LOOP>
+</TMPL_IF>
+
+<TMPL_IF my_login>
+<a href="<TMPL_VAR site_url>/?op=my_account"><TMPL_VAR lang_my_account></a>
+&nbsp; <a href="<TMPL_VAR site_url>"><TMPL_VAR lang_upload_files></a>
+&nbsp; <a href="<TMPL_VAR site_url>/?op=my_files"><TMPL_VAR lang_my_files></a>
+<TMPL_IF menu_stats>&nbsp; <a href="<TMPL_VAR site_url>/?op=my_reports"><TMPL_VAR lang_my_reports></a></TMPL_IF>
+<TMPL_IF enabled_prem>&nbsp; <a href="<TMPL_VAR site_url>/?op=payments"><TMPL_IF premium><TMPL_VAR lang_renew_premium><TMPL_ELSE><TMPL_VAR lang_buy_premium></TMPL_IF></a></TMPL_IF>
+&nbsp; <a href="<TMPL_VAR site_url>/?op=logout"><TMPL_VAR lang_logout></a>
+<br>
+<TMPL_IF admin>
+<div style="line-height:23px;">
+<a href="<TMPL_VAR site_url>/?op=admin_files"><TMPL_VAR lang_adm_file_mgmt></a> &nbsp; 
+<a href="<TMPL_VAR site_url>/?op=admin_users"><TMPL_VAR lang_adm_user_mgmt></a> &nbsp; 
+<a href="<TMPL_VAR site_url>/?op=admin_servers"><TMPL_VAR lang_adm_server_mgmt></a> &nbsp; 
+<TMPL_IF enp_t><a href="<TMPL_VAR site_url>/?op=admin_torrents"><TMPL_VAR lang_torrents></a> &nbsp; </TMPL_IF>
+<a href="<TMPL_VAR site_url>/?op=admin_reports"><TMPL_VAR lang_adm_abuse></a> &nbsp; 
+<a href="<TMPL_VAR site_url>/?op=admin_news"><TMPL_VAR lang_adm_news></a> &nbsp; 
+<a href="<TMPL_VAR site_url>/?op=admin_comments"><TMPL_VAR lang_file_cmt_sett></a> &nbsp; 
+<a href="<TMPL_VAR site_url>/?op=admin_payments"><TMPL_VAR lang_adm_payments></a> &nbsp; 
+<a href="<TMPL_VAR site_url>/?op=admin_stats"><TMPL_VAR lang_adm_stats></a> &nbsp; 
+<a href="<TMPL_VAR site_url>/?op=admin_settings"><TMPL_VAR lang_adm_settings></a>
+</div>
+</TMPL_IF>
+
+<TMPL_IF usr_mod>
+<div style="line-height:23px;">
+<TMPL_IF m_d_f><a href="<TMPL_VAR site_url>/?op=moderator_files"><TMPL_VAR lang_adm_file_mgmt></a> &nbsp; </TMPL_IF>
+<TMPL_IF m_d_a><a href="<TMPL_VAR site_url>/?op=admin_reports"><TMPL_VAR lang_adm_abuse></a> &nbsp; </TMPL_IF>
+<TMPL_IF m_d_c><a href="<TMPL_VAR site_url>/?op=admin_comments"><TMPL_VAR lang_file_cmt_sett></a></TMPL_IF>
+</div>
+</TMPL_IF>
+
+<TMPL_ELSE>
+
+<TMPL_IF enabled_reg>
+<a href="<TMPL_VAR site_url>/login.html"><b><TMPL_VAR lang_login></b></a>&nbsp; &nbsp;
+<a href="<TMPL_VAR site_url>/?op=registration"><b><TMPL_VAR lang_signup></b></a>&nbsp; &nbsp;
+<a href="<TMPL_VAR site_url>/?op=forgot_pass"><TMPL_VAR lang_forgot_pass></a>
+<br>
+</TMPL_IF>
+
+</TMPL_IF>
+<br>
+
+<TMPL_VAR tmpl>
+
+<div style="margin:3px 0 10px 0;">
+<a href="<TMPL_VAR site_url>"><TMPL_VAR lang_home></a> | 
+<a href="<TMPL_VAR site_url>/?op=news"><TMPL_VAR lang_news></a> | 
+<TMPL_IF enable_catalogue><a href="<TMPL_VAR site_url>/?op=catalogue"><TMPL_VAR lang_catalogue></a> | </TMPL_IF>
+<a href="<TMPL_VAR site_url>/faq.html"><TMPL_VAR lang_faq></a> | 
+<a href="<TMPL_VAR site_url>/tos.html"><TMPL_VAR lang_tos></a> | 
+<TMPL_IF enabled_prem><TMPL_UNLESS premium><a href="<TMPL_VAR site_url>/premium.html"><TMPL_VAR lang_premium></a> | </TMPL_UNLESS></TMPL_IF>
+<a href="<TMPL_VAR site_url>/checkfiles.html"><TMPL_VAR lang_link_checker></a> | 
+<a href="<TMPL_VAR site_url>/links.html"><TMPL_VAR lang_links></a> | 
+<a href="<TMPL_VAR site_url>/contact.html"><TMPL_VAR lang_contact_us></a>
+</div>
+<div style="color:#444;font-size:12px;">
+&copy; 2010 <TMPL_VAR site_name>, All Rights Reserved
+<br><small><a href="http://www.sibsoft.net/xfilesharing.html" title="XFileSharing" style="color:#999;text-decoration:none;">Powered by XFileSharing Pro</a></small>
+</div>
+
+
+
+</BODY>
+</HTML>
